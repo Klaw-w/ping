@@ -1,0 +1,25 @@
+{
+	"schemaVersion": 1,
+	"id": "ping",
+	"version": "${version}",
+	"name": "Ping",
+	"description": "A client-side ping and marker system modelled on Fortnite's, for Minecraft. Fortnite's health/shield meter and a ping feed in chat come with it.",
+	"authors": [
+		"Luna"
+	],
+	"contact": {},
+	"license": "CC0-1.0",
+	"icon": "assets/ping/icon.png",
+	"environment": "client",
+	"entrypoints": {
+		"client": [
+			"dev.ping.client.PingClient"
+		]
+	},
+	"depends": {
+		"fabricloader": ">=0.19.5",
+		"minecraft": "~26.2",
+		"java": ">=25",
+		"fabric-api": "*"
+	}
+}

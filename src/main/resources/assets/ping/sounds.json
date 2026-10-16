@@ -1,0 +1,20 @@
+{
+	"neutral": {
+		"sounds": ["ping:neutral"]
+	},
+	"enemy": {
+		"sounds": ["ping:enemy"]
+	},
+	"enemy_alt": {
+		"sounds": ["ping:enemy_alt"]
+	},
+	"item": {
+		"sounds": ["ping:item"]
+	},
+	"dbno": {
+		"sounds": ["ping:dbno"]
+	},
+	"scan": {
+		"sounds": ["ping:scan"]
+	}
+}
