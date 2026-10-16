@@ -8,12 +8,12 @@ import net.minecraft.world.item.Item;
  * How an item's identity survives the trip to another client.
  *
  * <p>An item marker is only correct if the far side knows <em>what</em> was marked,
- * so the item has to travel with the ping. Only its registry id does — the item itself
+ * so the item has to travel with the ping. Only its registry id does; the item itself
  * cannot, and a full {@link net.minecraft.world.item.ItemStack} would carry damage,
  * components and a count, none of which is needed to draw an icon or name a marker.
  *
  * <p>The id is written without the {@code minecraft:} namespace. That prefix is on
- * every vanilla item, and a chat message is not a free medium — every character a
+ * every vanilla item, and a chat message is not a free medium: every character a
  * client is a character of payload, so the ones that are always the same are the ones
  * worth dropping. Anything modded keeps its own namespace and so still round trips.
  */

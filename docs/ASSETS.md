@@ -2,7 +2,7 @@
 
 ## Where to get art
 
-**Use [fortnite.gg/assets](https://fortnite.gg/assets) — "Beyond Assets" — first.** Any UI
+**Use [fortnite.gg/assets](https://fortnite.gg/assets) ("Beyond Assets") first.** Any UI
 element or icon this mod needs should be taken from there rather than redrawn by hand or
 traced out of a screenshot. Its `Icons`, `UI`, `Device Icons`, `Graphics` and `Mini-Maps`
 categories carry the real in-game art, so the accurate version is normally one download
@@ -45,8 +45,8 @@ That order was followed and all three steps failed for these glyphs specifically
 
 1. **`fortnite.gg/assets` does not hold the in-game HUD glyph atlas.** It is a creator asset
    library. Searches for `skull`, `elimination`, `elims`, `players`, `hud`, `marker`,
-   `minimap`, `compass`, `waypoint`, `ping` and `crosshair` return cosmetic art —
-   stickers, badges, backblings — not the HUD icons. The `Icons` and `UI` categories are
+   `minimap`, `compass`, `waypoint`, `ping` and `crosshair` return cosmetic art
+   (stickers, badges, backblings), not the HUD icons. The `Icons` and `UI` categories are
    creator icons and overlays.
 2. **The wiki is Cloudflare-gated** for automated fetching, and the file it does host,
    `Eliminations - Icon - Fortnite.png`, is a progression badge rather than the HUD skull.
@@ -54,27 +54,27 @@ That order was followed and all three steps failed for these glyphs specifically
    available here.
 
 So they were extracted pixel-exactly from a Fortnite capture: threshold the white glyph,
-keep the largest connected blob (two glyphs overlap in frame — and note the *bust is two
+keep the largest connected blob (two glyphs overlap in frame, and note the *bust is two
 blobs*, a head and a body that never touch, so that one keeps every significant component
 rather than only the largest), fill enclosed holes so the skull's sockets stay punched, and
-crop to the content box. The results cross-check — the pointer came out 12×16 against an
+crop to the content box. The results cross-check: the pointer came out 12×16 against an
 independently measured 12×17, and the skull 27×32 against a measured 19×22 *box*.
 
 They are then **upscaled 4× with smoothing** before shipping, so that drawing them at their
-real size averages four source pixels per output pixel instead of dropping three of them —
+real size averages four source pixels per output pixel instead of dropping three of them,
 which is the difference between an icon that reads as low-resolution and one that reads as
 drawn. Each `.png.mcmeta` sets `blur` and `clamp`, so they sample with linear filtering
 rather than the nearest-neighbour default.
 
 **This is not a lossy trace.** At Minecraft's GUI scale 3 the drawn sizes are *smaller*
 than the extracted ones, so the source has more resolution than the drawing uses. If
-higher-resolution originals are ever obtained, they can simply replace these files — the
+higher-resolution originals are ever obtained, they can simply replace these files: the
 renderer only needs the asset's pixel size, which is a one-line constant per texture.
 
 
 They came from the wiki's [Marking](https://fortnite.fandom.com/wiki/Marking) page,
 which hosts the marker audio and icons as public files. The audio needed no conversion
-at all — it is already Ogg Vorbis, which is exactly Minecraft's format. Five of the six
+at all, it is already Ogg Vorbis, which is exactly Minecraft's format. Five of the six
 tones are mono; `scan` was stereo and was downmixed to mono.
 
 Note the wiki serves PNG files transcoded to WebP, so the icons were converted back to
@@ -90,7 +90,7 @@ marked point and the pin stands over it.
 Colour is **not** baked into the artwork. The white source is tinted at draw time using
 Minecraft's colour-modulating `blit`, which means:
 
-- changing any marker's colour is a one-line edit in `PingType` — no new art;
+- changing any marker's colour is a one-line edit in `PingType`: no new art;
 - the tint's alpha component also carries the fade, so occluded markers now dim
   properly instead of only fading their label.
 
@@ -107,7 +107,7 @@ to their pip on the locator bar, with no palette to keep in sync and nothing to 
 It is also why two players can end up on the same colour: only 24 bits of hash survive, so
 collisions are expected rather than a bug.
 
-Because the colour is a pure function of the UUID, it never travels over the wire — the
+Because the colour is a pure function of the UUID, it never travels over the wire; the
 receiving client re-derives it from the sender's UUID.
 
 Enemy and danger markers are currently forced red like Fortnite's danger marker:
@@ -121,15 +121,15 @@ comes from if you would rather match them exactly.
 
 ## Extracting more yourself
 
-If you want assets the wiki does not host — other UI art, the wheel icons, more sounds
-— you need **FModel**, a free standalone Windows app, plus the current Fortnite AES
+If you want assets the wiki does not host (other UI art, the wheel icons, more sounds
+) you need **FModel**, a free standalone Windows app, plus the current Fortnite AES
 key that the datamining community publishes on every patch. Point it at:
 
 ```
 C:\Program Files\Epic Games\Fortnite\FortniteGame\Content\Paks
 ```
 
-For sounds and textures you can **skip the .usmap mappings step** — that is only needed
+For sounds and textures you can **skip the .usmap mappings step**: that is only needed
 to read Blueprint properties, and it is the fiddliest part of the process.
 
 Fortnite's marker sounds have stable internal names, so search these exactly:
@@ -158,7 +158,7 @@ These are **not** in the mod. They are the crops the health/shield and feed numb
 [FIDELITY.md](FIDELITY.md) were measured from, kept so those numbers can be re-derived or
 replaced instead of taken on trust. They live in [docs/reference/](reference/).
 
-Source: the **Fortnite Wiki** at `fortnite.weirdgloop.org` (the Weird Gloop mirror — the
+Source: the **Fortnite Wiki** at `fortnite.weirdgloop.org` (the Weird Gloop mirror, the
 Fandom original returns 403 to automated fetches). Fetched October 2026. Wiki content is
 **CC BY-NC-SA 3.0**, and Fortnite art is Epic's, so these are for private measurement use
 and must not ship in the jar. Every file below should be treated as disposable: if a better
@@ -172,16 +172,16 @@ capture arrives, replace the file and update the numbers it fed.
 | `fn-hud-chapter2-early-health-shield-bar.png` | Chapter 2: S1–S5 meter | history only |
 | `fn-hud-chapter2-health-shield-bar.png` | Chapter 2: S6–Chapter 3: S1 meter | history only |
 | `fn-hud-chapter7-npc-health-bar.png` | Chapter 7 **NPC/boss** bar | different meter from the player's; downloaded for contrast, not measured |
-| `fn-hud-elimination-feed-v32.png` | Message Feed, v32.00 | the feed's text metrics — line pitch and cap height |
+| `fn-hud-elimination-feed-v32.png` | Message Feed, v32.00 | the feed's text metrics: line pitch and cap height |
 | `fn-icon-health.png` | health glyph | candidate icon art |
 | `fn-icon-shield.png` | shield glyph | candidate icon art |
 | `fn-icon-overshield.png` | overshield glyph | candidate icon art |
 | `fn-icon-marker-pin.png` | the white marker pin | cross-check against the pin already shipped from the same wiki |
-| `fn-settings-video-tab.png` | Fortnite's settings screen, VIDEO tab | the design reference for this mod's settings screen — background, tab bar, rows, tick bars, the description panel, the bottom pill buttons |
-| `fn-settings-audio-tab.png` | Fortnite's settings screen, AUDIO tab | the same screen again, which is what makes the shared furniture trustworthy rather than a one-off — the tab bar, the left rail, the row rhythm and the button row are identical across both |
+| `fn-settings-video-tab.png` | Fortnite's settings screen, VIDEO tab | the design reference for this mod's settings screen: background, tab bar, rows, tick bars, the description panel, the bottom pill buttons |
+| `fn-settings-audio-tab.png` | Fortnite's settings screen, AUDIO tab | the same screen again, which is what makes the shared furniture trustworthy rather than a one-off: the tab bar, the left rail, the row rhythm and the button row are identical across both |
 
 The two settings captures came from the mod's author rather than the wiki, and are
-**2000 × 1125** — a clean 16:9 frame, which is a better basis than the wiki's earlier crops
+**2000 × 1125**: a clean 16:9 frame, which is a better basis than the wiki's earlier crops
 of unknown scale. Still a capture rather than the game's own values, so the numbers read
 off it are measurements *of a frame*, not of the game, and are labelled that way.
 
@@ -192,8 +192,8 @@ health, shield and overshield icons are hosted as public files.
 ## The heart sprites were removed
 
 An earlier revision tinted Minecraft's own heart sprites green to stand in for Fortnite's
-health. That was the wrong shape for the job — a recoloured heart is a Minecraft HUD in
-green, not Fortnite's meter — so it was replaced by `HealthShieldHud`, which draws
+health. That was the wrong shape for the job: a recoloured heart is a Minecraft HUD in
+green, not Fortnite's meter, so it was replaced by `HealthShieldHud`, which draws
 Fortnite's two bars, glyphs and values directly. The three derived greyscale heart PNGs
 came out of the jar with it.
 
@@ -203,11 +203,11 @@ only ever darken it and no green can be made from a red one by colouring. That i
 property of the assets, not of the approach, and it is why the earlier attempt had to ship
 derived sprites at all.
 
-The glyphs now used are the wiki's own shield and health icons, above — real art, nothing
+The glyphs now used are the wiki's own shield and health icons, above: real art, nothing
 re-drawn or derived.
 
 ## Keep a file in every slot
 
 Icon textures load synchronously the first time they are drawn, so a slot with no file
-at all is worse than a *wrong* file. Every slot already has art in it — overwrite, do
+at all is worse than a *wrong* file. Every slot already has art in it: overwrite, do
 not delete.

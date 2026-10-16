@@ -10,7 +10,7 @@ package dev.ping.client.map;
  * what is measured and what is still a working value.
  *
  * <p>One deliberate deviation: Fortnite's readout text has a cap height of about 14 px on
- * a 1080p frame, which is roughly 4.7 GUI pixels at Minecraft's GUI scale 3 — smaller than
+ * a 1080p frame, which is roughly 4.7 GUI pixels at Minecraft's GUI scale 3, smaller than
  * Minecraft's own font can draw legibly. The readouts therefore keep Fortnite's
  * <em>positions and row rhythm</em> but use Minecraft's default font size, so they read
  * slightly larger than the capture. Matching the pixel height would be matching something
@@ -70,7 +70,7 @@ public final class MinimapConstants {
 	 * The label's cap height. Measured 21.5/1079.
 	 *
 	 * <p>Fortnite's label names the named location you are standing in. Minecraft has no
-	 * named locations, so this build shows the biome instead — the same idea, the same slot.
+	 * named locations, so this build shows the biome instead, the same idea, the same slot.
 	 */
 	public static final float LABEL_FRACTION = 0.0199F;
 
@@ -108,7 +108,7 @@ public final class MinimapConstants {
 	 * How much smaller the readout numbers are than Minecraft's font.
 	 *
 	 * <p>Fortnite's readout text has a 14 px cap height on a 1080p frame, which is about 4.7
-	 * GUI pixels at GUI scale 3 — Minecraft's font has a 7 px cap and cannot go smaller and
+	 * GUI pixels at GUI scale 3, Minecraft's font has a 7 px cap and cannot go smaller and
 	 * stay legible, so the text is scaled to close most of the gap without becoming mush.
 	 */
 	public static final float READOUT_TEXT_SCALE = 0.80F;
@@ -126,7 +126,7 @@ public final class MinimapConstants {
 	 *
 	 * <p>Fixed, and independent of the zoom: zooming changes how many blocks each texel
 	 * covers rather than how many texels there are. That keeps the texture allocation and
-	 * the per-frame cost flat, which is what makes the map affordable at all — the
+	 * the per-frame cost flat, which is what makes the map affordable at all: the
 	 * alternative, one draw call per texel, is tens of thousands of quads a frame.
 	 */
 	public static final int TEXELS = 384;
@@ -176,8 +176,8 @@ public final class MinimapConstants {
 	 * The most chunks the map will remember.
 	 *
 	 * <p>Explored terrain is kept rather than forgotten, so the cache needs a ceiling: this
-	 * is about sixteen thousand chunks, an area about 64×64 chunks across — more ground than
-	 * a session covers — at roughly a kilobyte of colours each.
+	 * is about sixteen thousand chunks, an area about 64×64 chunks across, more ground than
+	 * a session covers, at roughly a kilobyte of colours each.
 	 */
 	public static final int MAX_TILES = 16_384;
 
@@ -185,7 +185,7 @@ public final class MinimapConstants {
 	 * How many chunks a biome region must cover before the map names it.
 	 *
 	 * <p>Without a floor, every scrap of river bank and beach carries a label and the map
-	 * turns into a wall of text. Eight chunks is about 45 by 45 blocks — small enough to
+	 * turns into a wall of text. Eight chunks is about 45 by 45 blocks, small enough to
 	 * catch real terrain features, large enough that a name means something.
 	 */
 	public static final int MIN_BIOME_CHUNKS = 8;

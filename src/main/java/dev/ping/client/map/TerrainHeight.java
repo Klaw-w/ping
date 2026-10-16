@@ -12,8 +12,8 @@ import net.minecraft.world.level.levelgen.Heightmap;
 /**
  * Reading the surface of a column, without depending on the client having the heightmap.
  *
- * <p>Which heightmaps a client receives is the server's choice — {@code
- * Heightmap.Types.sendToClient()} decides, and it is only the {@code CLIENT}-usage ones — so
+ * <p>Which heightmaps a client receives is the server's choice: {@code
+ * Heightmap.Types.sendToClient()} decides, and it is only the {@code CLIENT}-usage ones, so
  * a client can simply not have the map a caller asks for. Nobody needs to be protected from
  * a crash here: {@code Level.getHeight} handles the gap by priming the missing heightmap on
  * demand from the chunk's block states. What this avoids is <em>paying</em> for that
@@ -26,7 +26,7 @@ import net.minecraft.world.level.levelgen.Heightmap;
  * <p>Preferred in the order a top-down map wants to read: the true surface, then anything
  * that blocks motion (water, leaves), then the ocean floor. A chunk with none of them
  * reports itself as unknown rather than guessing, and the caller decides what to do about
- * that — the sampler marks the column unknown, a map-placed marker falls back to the
+ * that, the sampler marks the column unknown, a map-placed marker falls back to the
  * player's own height.
  */
 final class TerrainHeight {
@@ -57,7 +57,7 @@ final class TerrainHeight {
 	}
 
 	/**
-	 * The y a marker on this column should sit at — the first air position above the
+	 * The y a marker on this column should sit at: the first air position above the
 	 * ground, which is what a beam stands on.
 	 *
 	 * @return {@link #UNKNOWN} when the chunk is not loaded or has no usable heightmap

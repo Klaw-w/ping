@@ -13,11 +13,11 @@ import net.minecraft.client.gui.GuiGraphicsExtractor;
  * The corner minimap: the map, Fortnite's readout column beside it, and the location label
  * at its foot.
  *
- * <p>Every size and offset here is measured off a Fortnite capture rather than chosen —
+ * <p>Every size and offset here is measured off a Fortnite capture rather than chosen;
  * see {@link MinimapConstants}. The map is a bare square with no frame, sitting in the top
  * right at 23.35% of the screen height, 3% from the top and 2.9% from the right edge.
  *
- * <p>It is not clickable, and that is not a limitation — it is Fortnite's behaviour. The
+ * <p>It is not clickable, and that is not a limitation; it is Fortnite's behaviour. The
  * mouse is captured by the camera while you are playing, so there is no cursor to click
  * with; marking from a map happens on the full-size map, which the map key ({@code M} by
  * default) opens.

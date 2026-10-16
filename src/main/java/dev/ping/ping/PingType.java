@@ -5,7 +5,7 @@ package dev.ping.ping;
  * including the separate "danger" variant that a double-tap of the ping key produces.
  *
  * <p><b>Colour deliberately lives elsewhere.</b> A marker is drawn in its author's
- * locator bar colour, derived from their UUID — see {@link PingColors}. Keeping colour
+ * locator bar colour, derived from their UUID: see {@link PingColors}. Keeping colour
  * out of this enum means there is exactly one source of truth for it, and adding a new
  * marker type cannot accidentally invent a second palette.
  *
@@ -22,7 +22,7 @@ public enum PingType {
 	ITEM("item", "Item Here", "item", "marked an item"),
 	/** Something worth defending or grouping on. */
 	DEFEND("defend", "Defend This", "neutral", "marked a defend point"),
-	/** "Let's go here" — the movement order. */
+	/** "Let's go here": the movement order. */
 	GOING("going", "Going Here", "neutral", "marked a destination");
 
 	private final String id;
@@ -51,7 +51,7 @@ public enum PingType {
 	}
 
 	/**
-	 * What the feed calls this, in Fortnite's own words — "marked an enemy location",
+	 * What the feed calls this, in Fortnite's own words: "marked an enemy location",
 	 * "marked a destination". Separate from {@link #label()}, which is the marker's own
 	 * heading ("Enemy Spotted") and is title case.
 	 */

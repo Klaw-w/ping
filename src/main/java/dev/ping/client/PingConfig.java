@@ -21,7 +21,7 @@ import net.fabricmc.loader.api.FabricLoader;
  *
  * <p>The one setting that matters most is {@link #sendPingsOverChat()}. Pings reach other
  * players by being smuggled through chat, which is the only channel that works with nothing
- * installed server-side — but it means a ping is a real chat message, visible in the server
+ * installed server-side, but it means a ping is a real chat message, visible in the server
  * log and to anyone who does not have the mod. Turn it off and pings become entirely local.
  *
  * <p><b>Measured versus chosen is preserved here exactly as it was in {@code PingConstants}.</b>
@@ -29,7 +29,7 @@ import net.fabricmc.loader.api.FabricLoader;
  * look right; making a value editable does not make it sourced.
  *
  * <p>Every setter clamps to the range the settings screen offers. The screen is not the only
- * writer — the file can be hand-edited — and a lifetime of zero or a marker height of fifty
+ * writer (the file can be hand-edited), and a lifetime of zero or a marker height of fifty
  * would break the HUD, so the clamp lives at the store, not only at the control.
  */
 public final class PingConfig {
@@ -367,8 +367,8 @@ public final class PingConfig {
 	 * Puts every setting back to the value {@code ping.json} is first written with.
 	 *
 	 * <p>This is what the screen's RESTORE button calls. It used to mean "set every toggle to
-	 * true", which stopped meaning anything once the screen gained numbers — a lifetime has no
-	 * {@code true} — so defaults live here, beside the values they restore.
+	 * true", which stopped meaning anything once the screen gained numbers, a lifetime has no
+	 * {@code true}, so defaults live here, beside the values they restore.
 	 */
 	public static void resetToDefaults() {
 		sendPingsOverChat = DEFAULT_SEND_PINGS_OVER_CHAT;

@@ -14,7 +14,7 @@ import net.minecraft.resources.Identifier;
  *
  * <p>The map is drawn by reading {@link MinimapTerrain}'s sampled colours into a
  * {@link NativeImage} and uploading it. That is the whole trick behind it being cheap: one
- * blit per frame, rather than one fill per map pixel — a 384-wide map drawn as individual
+ * blit per frame, rather than one fill per map pixel: a 384-wide map drawn as individual
  * quads would be 147,456 of them, every frame, which is not a thing to do to a render
  * thread.
  *
@@ -27,9 +27,9 @@ import net.minecraft.resources.Identifier;
  * being precise about why that is safe, because the obvious reading is wrong: {@code
  * TextureManager.reload} only re-schedules reloadable textures, and a {@code DynamicTexture}
  * is not one, so F3+T does not drop this. The manager closes it at shutdown, after the
- * render loop has ended. There is therefore no re-registration path to write, and — since
+ * render loop has ended. There is therefore no re-registration path to write, and, since
  * {@code AbstractTexture.getTexture()} throws rather than returning {@code null} once its
- * GPU texture has been released — no null check that could stand in for one.
+ * GPU texture has been released, no null check that could stand in for one.
  */
 final class MinimapTexture {
 	private static final Identifier ID = PingClient.id("minimap");
@@ -48,7 +48,7 @@ final class MinimapTexture {
 	 * The texture's origin, snapped to the texel grid rather than to whole blocks.
 	 *
 	 * <p>This is what makes the map pan smoothly. Snapping to blocks meant a step of
-	 * `blocksAcross / TEXELS` texels — 1.5 of them at the default zoom — so the sampling phase
+	 * `blocksAcross / TEXELS` texels (1.5 of them at the default zoom), so the sampling phase
 	 * alternated as the centre moved and the terrain shimmered on its own. Snapping to the
 	 * texel grid makes every step exactly one texel, which the blit offset then cancels
 	 * exactly, leaving a residual movement of a fraction of a pixel.

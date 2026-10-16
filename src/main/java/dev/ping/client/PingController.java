@@ -35,7 +35,7 @@ import net.minecraft.world.phys.Vec3;
  * looking at terrain marks the point you are actually aiming at.
  *
  * <p><b>It does not use the vanilla pick result.</b> {@code Minecraft.hitResult} only
- * reaches as far as an arm — about 4.5 blocks — so anything further away read as a miss
+ * reaches as far as an arm (about 4.5 blocks), so anything further away read as a miss
  * and fell through to the old "ping the sky" fallback, which put the marker hundreds of
  * blocks away regardless of the terrain in between. Everything here is done with our own
  * long raycast instead.
@@ -104,8 +104,8 @@ public final class PingController {
 		// placed, takes it straight back down, and no danger marker is ever created.
 		boolean doubleTap = now - this.lastTap <= PingConstants.DOUBLE_TAP_MS;
 
-		// Fortnite throttles the mark button — "a short cooldown before using them
-		// repeatedly" — so a spam of presses does not walk the marker and re-cue the tone
+		// Fortnite throttles the mark button, "a short cooldown before using them
+		// repeatedly", so a spam of presses does not walk the marker and re-cue the tone
 		// over and over. The double tap is exempt, or the danger marker could never land.
 		if (!doubleTap && this.onCooldown(now)) {
 			return;

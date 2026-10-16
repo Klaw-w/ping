@@ -1,6 +1,6 @@
 # Agent notes
 
-Working notes for anyone — human or agent — picking this repo up. Read this before
+Working notes for anyone (human or agent) picking this repo up. Read this before
 sourcing art, adding a UI element, or believing something about a Minecraft API.
 
 ## UI and icon art: use fortnite.gg/assets
@@ -16,8 +16,8 @@ redrawn from a video frame is a guess wearing a costume.
 
 Order of preference when something is not there:
 
-1. **<https://fortnite.gg/assets>** — the default.
-2. **The Fortnite Wiki** — where the ping tones and the white marker pin came from; it hosts
+1. **<https://fortnite.gg/assets>**: the default.
+2. **The Fortnite Wiki**, where the ping tones and the white marker pin came from; it hosts
    those as public files.
 3. **FModel** against an installed copy of the game, with the current AES key. Fiddliest,
    and the only route for audio and textures the first two do not carry.
@@ -28,14 +28,14 @@ source is an asset nobody can replace.
 
 ## House rules
 
-- **Check Minecraft APIs against the real jar, from bytecode — not from memory.** This
+- **Check Minecraft APIs against the real jar, from bytecode, not from memory.** This
   project targets a Minecraft version whose API differs from every older one in ways that
   look plausible either way (`GuiGraphics` is `GuiGraphicsExtractor`; screens render through
   `extractRenderState`; `Minecraft.setScreen` is `setScreenAndShow`; the current screen
   lives on `Gui.screen()`). Mapped jar:
   `~/.gradle/caches/fabric-loom/<version>/minecraft-merged.jar`, read with `javap -c -p`.
   A remembered signature is a bug waiting to happen.
-- **Say measured, or say guessed — never blur them.** `docs/FIDELITY.md` exists to keep
+- **Say measured, or say guessed; never blur them.** `docs/FIDELITY.md` exists to keep
   that line visible: it records what came from a real measurement, what came from
   documentation, and what is a working value chosen to look right. Do not promote a tuned
   number to a measured one, and if you find a source, cite it.

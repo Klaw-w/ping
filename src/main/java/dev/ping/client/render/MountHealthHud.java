@@ -19,7 +19,7 @@ import net.minecraft.world.entity.player.Player;
  *
  * <p><b>Why vanilla's mount hearts are replaced.</b> Minecraft draws a mount's health as a
  * second row of hearts beneath the player's own, which is the wrong shape for this HUD for
- * the same reason the player's row was replaced — a recoloured heart is a Minecraft HUD in
+ * the same reason the player's row was replaced: a recoloured heart is a Minecraft HUD in
  * orange, not the thing being asked for. Fortnite instead draws a single separate bar:
  * the wiki's <i>Health (Battle Royale)</i> page records that riding a vehicle draws a
  * separate <b>orange</b> health bar above the shield bar. That fact is documentation, not a
@@ -30,7 +30,7 @@ import net.minecraft.world.entity.player.Player;
  * same width ({@link HealthShieldHud#BAR_WIDTH}), and floats {@link #GAP} GUI pixels above
  * the meter's top edge ({@link HealthShieldHud#meterTop(int)}), so the three bars read as
  * one stack and cannot drift apart if the meter is ever resized. The height is
- * <b>chosen</b> — the brief allows 8-10 GUI px and no capture fixes it — and is set equal to
+ * <b>chosen</b>: the brief allows 8-10 GUI px and no capture fixes it, and is set equal to
  * the shield bar's height so the upper two bars match.
  *
  * <p><b>The orange is chosen, not measured.</b> The wiki says "orange" and gives no hex, so
@@ -41,7 +41,7 @@ import net.minecraft.world.entity.player.Player;
  *
  * <p><b>The value is a percentage on Fortnite's 0-100 scale.</b> Minecraft health is out of
  * 20, so a raw number would print "20" where Fortnite prints "100". The number printed is
- * the fraction of the bar that is filled, rounded, so the digits and the fill always agree —
+ * the fraction of the bar that is filled, rounded, so the digits and the fill always agree:
  * the same convention, and the same reasoning, as {@link HealthShieldHud}. It is not a
  * hit-point count.
  *
@@ -63,7 +63,7 @@ public final class MountHealthHud implements HudElement {
 	// ---- chosen colours ---------------------------------------------------
 
 	/**
-	 * The vehicle ramp. <b>Chosen, not measured</b> — the wiki says orange and gives no hex,
+	 * The vehicle ramp. <b>Chosen, not measured</b>: the wiki says orange and gives no hex,
 	 * so these are picked to read as Fortnite orange beside the shield blue and health green.
 	 */
 	private static final int VEHICLE_FROM = 0xFFF26A0C;
@@ -103,8 +103,8 @@ public final class MountHealthHud implements HudElement {
 		Entity vehicle = player.getVehicle();
 
 		// Vanilla's guard, narrowed to the two conditions that actually decide a bar:
-		// a LivingEntity mount whose max health yields at least one heart. Anything else —
-		// walking, a boat, a mount with a single hit point — has no bar to draw, so vanilla
+		// a LivingEntity mount whose max health yields at least one heart. Anything else,
+		// walking, a boat, a mount with a single hit point, has no bar to draw, so vanilla
 		// is asked to draw nothing rather than being skipped outright.
 		if (!(vehicle instanceof LivingEntity mount) || mount.getMaxHealth() <= 1.0F) {
 			this.delegate.extractRenderState(graphics, delta);
@@ -123,7 +123,7 @@ public final class MountHealthHud implements HudElement {
 				fraction, VEHICLE_FROM, VEHICLE_TO, VEHICLE_CAP, VEHICLE_CAP_WIDTH, true);
 
 		// The value, on Fortnite's 0-100 scale, vertically centred on the bar and set just
-		// right of it — the placement HealthShieldHud.drawValue uses for the other two bars.
+		// right of it: the placement HealthShieldHud.drawValue uses for the other two bars.
 		Font font = client.font;
 		int value = Math.round(Mth.clamp(fraction, 0.0F, 1.0F) * 100.0F);
 

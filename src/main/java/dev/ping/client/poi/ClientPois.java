@@ -22,7 +22,7 @@ import net.minecraft.world.level.Level;
  *
  * <p>Right-clicking a banner names the place it stands on. The click is <b>consumed on the
  * client</b> rather than passed to the server, so naming a banner does not also place the
- * block you happen to be holding — the same reason the map key does not fall through to the
+ * block you happen to be holding, the same reason the map key does not fall through to the
  * world. Banners have no use action of their own, so nothing on the server is being
  * suppressed by doing this.
  */
@@ -90,7 +90,7 @@ public final class ClientPois {
 	 *
 	 * <p>The name is anchored to the banner, so breaking the banner has to break the name.
 	 * The check is a sweep rather than a hook on block breaking, because a banner can also
-	 * be destroyed by an explosion, by another player, or by a piston — none of which the
+	 * be destroyed by an explosion, by another player, or by a piston; none of which the
 	 * person who named it performs, and only a sweep catches all of them.
 	 *
 	 * <p><b>The loaded check is load-bearing.</b> An unloaded chunk answers "not a banner"

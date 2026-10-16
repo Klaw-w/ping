@@ -33,17 +33,17 @@ import net.minecraft.world.phys.Vec3;
  * things a Minecraft client either has or has not:
  *
  * <ul>
- *   <li><b>Level &amp; XP bar</b> — the same thing in both games. The player's experience
+ *   <li><b>Level &amp; XP bar</b>: the same thing in both games. The player's experience
  *       level, their progress to the next, and the XP still needed. No invention.</li>
- *   <li><b>Players left</b> — "players online on this server", from the tab list.</li>
- *   <li><b>Storm timer</b> — becomes the in-game clock. Minecraft has no storm, so a
+ *   <li><b>Players left</b>: "players online on this server", from the tab list.</li>
+ *   <li><b>Storm timer</b>: becomes the in-game clock. Minecraft has no storm, so a
  *       countdown would be a lie; the time of day is real, useful under a map, and sits in
  *       the row Fortnite gives a clock icon.</li>
- *   <li><b>Eliminations</b> — only the local player's count is knowable. The server pushes
+ *   <li><b>Eliminations</b>: only the local player's count is knowable. The server pushes
  *       stats for the local player alone, and no clientbound packet names a killer, so the
  *       other squad rows cannot be filled in. They are listed with their locator colour and
  *       a dash rather than a fabricated zero.</li>
- *   <li><b>Bars</b> — dropped. It is a Fortnite currency with no Minecraft counterpart, and
+ *   <li><b>Bars</b>: dropped. It is a Fortnite currency with no Minecraft counterpart, and
  *       inventing one would be inventing data.</li>
  * </ul>
  *
@@ -334,7 +334,7 @@ public final class PingMapScreen extends Screen {
 				continue;
 			}
 
-			rows.add(new MapChrome.Row(other.getName().getString(), "—", PingColors.of(other.getUUID())));
+			rows.add(new MapChrome.Row(other.getName().getString(), "-", PingColors.of(other.getUUID())));
 		}
 
 		return rows;

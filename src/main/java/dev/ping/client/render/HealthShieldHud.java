@@ -20,7 +20,7 @@ import net.minecraft.world.entity.player.Player;
  *
  * <p>Two flat bars in the bottom-left, shield above health, each with a white glyph on its
  * left and a white value on its right. The empty part of each bar is a solid dark fill.
- * This is the Chapter 7 design as measured off the capture in {@code docs/FIDELITY.md} —
+ * This is the Chapter 7 design as measured off the capture in {@code docs/FIDELITY.md},
  * not a Minecraft row wearing Fortnite's colours. There are no hearts here.
  *
  * <p><b>Proportions are measured; the scale is chosen.</b> The capture's absolute
@@ -30,15 +30,15 @@ import net.minecraft.world.entity.player.Player;
  *
  * <p><b>The values read on Fortnite's 0-100 scale.</b> Minecraft's health is out of 20 and
  * absorption has no fixed cap, so a raw number would print "20" where Fortnite prints
- * "100". Both bars therefore show the fraction of the bar that is filled, as a percentage
- * — so the number and the fill always agree, and a full bar reads 100 exactly as it does
+ * "100". Both bars therefore show the fraction of the bar that is filled, as a percentage,
+ * so the number and the fill always agree, and a full bar reads 100 exactly as it does
  * in Fortnite. It is a percentage, not a hit-point count, and it is labelled as one here
  * rather than passed off as the latter.
  *
  * <p><b>Why the vanilla element is replaced.</b> Hearts are the wrong shape for this and a
  * recoloured heart is a Minecraft HUD in green, which is not the thing being asked for.
- * Vanilla's {@code health} element covers the heart row and absorption and nothing else —
- * armour, food, air and mount health are separate elements — so replacing it cannot break
+ * Vanilla's {@code health} element covers the heart row and absorption and nothing else:
+ * armour, food, air and mount health are separate elements, so replacing it cannot break
  * them.
  *
  * <p><b>Absorption is the shield.</b> Minecraft spends absorption before health, which is
@@ -81,7 +81,7 @@ public final class HealthShieldHud implements HudElement {
 	/** Clear space left between the top of the meter and the bottom of chat. */
 	private static final int CHAT_GAP = 6;
 
-	/** Width of the block that terminates a filled bar — the yellow tip on health. */
+	/** Width of the block that terminates a filled bar, the yellow tip on health. */
 	private static final int HEALTH_CAP_WIDTH = 3;
 
 	/** Width of the bright sliver that terminates a filled shield bar. */
@@ -144,8 +144,8 @@ public final class HealthShieldHud implements HudElement {
 	 * mount bar's slot <em>even when there is no mount</em>.
 	 *
 	 * <p>That reservation is deliberate. Chat is lifted by this number, and lifting it only
-	 * while mounted would make the chat block jump every time someone got on or off a horse
-	 * — which is worse than twelve pixels of clearance that is sometimes unused.
+	 * while mounted would make the chat block jump every time someone got on or off a horse,
+	 * which is worse than twelve pixels of clearance that is sometimes unused.
 	 */
 	public static int clearance() {
 		return BASELINE + HEALTH_HEIGHT + BAR_GAP + SHIELD_HEIGHT + MOUNT_GAP + MOUNT_HEIGHT + CHAT_GAP;
@@ -161,7 +161,7 @@ public final class HealthShieldHud implements HudElement {
 		return MARGIN + ICON_COLUMN + ICON_GAP;
 	}
 
-	/** The y of the meter's top edge — the shield bar's top. */
+	/** The y of the meter's top edge, the shield bar's top. */
 	static int meterTop(int guiHeight) {
 		return guiHeight - BASELINE - HEALTH_HEIGHT - BAR_GAP - SHIELD_HEIGHT;
 	}
@@ -241,7 +241,7 @@ public final class HealthShieldHud implements HudElement {
 			healthTo = POISON_TO;
 		}
 
-		// Shield above, health below — Epic's own description of the layout, and the order
+		// Shield above, health below: Epic's own description of the layout, and the order
 		// it reads in: the thing spent first is the thing you look at first.
 		this.drawBar(graphics, barX, shieldTop, BAR_WIDTH, SHIELD_HEIGHT, absorption / SHIELD_CAPACITY,
 				SHIELD_FROM, SHIELD_TO, SHIELD_EDGE, SHIELD_EDGE_WIDTH, false);

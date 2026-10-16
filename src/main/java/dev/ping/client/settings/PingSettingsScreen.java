@@ -25,8 +25,8 @@ import org.lwjgl.glfw.GLFW;
 /**
  * The mod's settings, as a screen, rebuilt to a pair of Fortnite captures.
  *
- * <p>Two reference frames were supplied — Fortnite's {@code VIDEO} tab and its {@code AUDIO}
- * tab, both 2000×1125 — and every colour and offset below was read off them with a pixel
+ * <p>Two reference frames were supplied (Fortnite's {@code VIDEO} tab and its {@code AUDIO}
+ * tab, both 2000×1125) and every colour and offset below was read off them with a pixel
  * probe rather than chosen. That is a change of provenance worth stating plainly: the
  * previous revision of this class had none. It borrowed the map screen's chrome, which came
  * off a different capture altogether, and spaced its rows to that screen's rhythm. The map
@@ -37,7 +37,7 @@ import org.lwjgl.glfw.GLFW;
  * therefore stored as a fraction of the window: a measurement in capture pixels only ever
  * appears below as a numerator over 2000 (horizontal) or 1125 (vertical), and is converted
  * at draw time. Nothing was read off one frame and applied at the other's scale, and the two
- * agreed wherever they overlapped — the tab bar, the rail, the buttons and the section
+ * agreed wherever they overlapped: the tab bar, the rail, the buttons and the section
  * headings are pixel-identical in both, which is the only reason the measurements can be
  * treated as one screen's.
  *
@@ -60,8 +60,8 @@ import org.lwjgl.glfw.GLFW;
  * that box is nine pixels: seven of ascent and two of descent ({@code Font.lineHeight} is a
  * hard-coded 9, and {@code GlyphBitmap.getTop} is {@code 7.0F − bearingTop} against a default
  * bearing of 7, so a capital's ink starts exactly on the {@code y} the run is drawn at and
- * its baseline is seven below). That makes a measured ink top a legal {@code y} — every
- * heading, row label and panel line keeps the capture's own ink position — but it also means
+ * its baseline is seven below). That makes a measured ink top a legal {@code y} (every
+ * heading, row label and panel line keeps the capture's own ink position) but it also means
  * no two texts at <em>different</em> cap heights share a line
  * unless the smaller is pushed down by the difference in their caps times that ascent, and
  * that a text held by a box stands on the box's centre line rather than hanging from its top
@@ -70,15 +70,15 @@ import org.lwjgl.glfw.GLFW;
  * between the label and its value, is gone, because the two pixels were always the cap
  * difference in disguise and only rounded to the right GUI pixel at the window height they
  * were read at. The label also carried Minecraft's drop shadow where its value did not, and
- * a shadow is one font pixel of extra ink below the baseline — at this screen's sizes that is
+ * a shadow is one font pixel of extra ink below the baseline: at this screen's sizes that is
  * three device pixels, which is exactly the "few pixels" that made a row look like two lines.
  *
  * <p><b>Every string on this screen goes through {@link #boxedText} or
  * {@link #boxedParagraph}.</b> Fortnite puts each label, value and paragraph in an invisible
  * box: the text is clipped to it, and when it does not fit it scrolls inside rather than
- * spilling onto whatever is next to it. That behaviour is not decoration — the {@code AUDIO}
+ * spilling onto whatever is next to it. That behaviour is not decoration (the {@code AUDIO}
  * capture's Audio Output Device value is visibly sliced to <em>utput - Headphones (Real</em>
- * by its own box — and the previous revision of this class, which let {@code text} land
+ * by its own box) and the previous revision of this class, which let {@code text} land
  * wherever it liked, ran the description straight into the option list. The box is drawn
  * with {@link GuiGraphicsExtractor#enableScissor}, verified against the mapped jar: the
  * method pushes a {@code ScreenRectangle} onto a {@code ScissorStack} and
@@ -93,7 +93,7 @@ import org.lwjgl.glfw.GLFW;
  * <ul>
  *   <li><b>The tab's icon.</b> The capture's active tab is a glyph on a light slab. Epic's
  *       artwork is not in this repo and freehanding a Fortnite glyph is what
- *       {@code AGENTS.md} forbids, so the slab carries the tab's <em>name</em> instead —
+ *       {@code AGENTS.md} forbids, so the slab carries the tab's <em>name</em> instead,
  *       which is what this mod's own map screen already does with its active tab, so the two
  *       screens agree.</li>
  *   <li><b>{@code APPLY}.</b> The capture has three buttons. {@code BACK} and
@@ -102,7 +102,7 @@ import org.lwjgl.glfw.GLFW;
  *       is nothing left to commit. A button that does nothing is a lie in the shape of a
  *       button, which is the same judgement the map screen's tab strip makes.</li>
  *   <li><b>The solid sliders.</b> Brightness and contrast in the capture are a blue-filled
- *       track with a dark remainder — measured {@code #002A89} at the left of the fill
+ *       track with a dark remainder: measured {@code #002A89} at the left of the fill
  *       brightening to {@code #0551EE} at its edge, over a {@code #000545} track that runs
  *       from x 610 to past the scrollbar. Every number here is discrete and stepped, so none
  *       of them uses one; the numbers are recorded here so the next person does not have to
@@ -113,12 +113,12 @@ import org.lwjgl.glfw.GLFW;
  * <p><b>Two readings that could have gone the other way, resolved.</b> The tab's name is
  * <em>centred</em> under its chip, not left-aligned: measured, the name "VIDEO" spans
  * x 414–485 of a chip at x 403–495, centres 449.5 and 449, and "AUDIO" agrees. And the space
- * around the focused row is real padding rather than a gap — the focus box is 89 capture
+ * around the focused row is real padding rather than a gap: the focus box is 89 capture
  * pixels tall where the row pitch is 96, so one row's box very nearly touches the next.
  *
  * <p><b>Sections, and the one measurement they cost.</b> The captures put their group
  * headings ({@code DISPLAY}, {@code GRAPHICS}, {@code SOUND}, {@code CREATOR OPTIONS}) inline
- * in the list, scrolling with the rows — the {@code AUDIO} frame proves it, since its list
+ * in the list, scrolling with the rows: the {@code AUDIO} frame proves it, since its list
  * has scrolled far enough to show {@code SOUND} mid-list and {@code CREATOR OPTIONS} at the
  * fold. This screen therefore draws each heading as the first line of its group. The cost is
  * the {@code VIDEO} frame's measured gap between its first heading (y 0.1618) and its first
@@ -144,7 +144,7 @@ public final class PingSettingsScreen extends Screen {
 	 * the way down ({@code #0D4E6E}); the darkest is the middle of the frame
 	 * ({@code #0F0D1B}); and the bottom-right corner ({@code #0E3264}, a medium navy) is
 	 * brighter again than the middle beside it. A single {@code fillGradient} cannot express
-	 * that — it is monotonic along one axis — so the field is drawn as vertical strips
+	 * that (it is monotonic along one axis) so the field is drawn as vertical strips
 	 * between the sampled rows. See {@link #backdrop}.
 	 *
 	 * <p>Every value is {@code #RRGGBB}; the alpha is added at draw time.
@@ -158,8 +158,8 @@ public final class PingSettingsScreen extends Screen {
 	};
 
 	/**
-	 * The backdrop at y 500 of 1125 — the row that shows the left of the frame is still
-	 * bright halfway down, which a top-to-bottom ramp would not.
+	 * The backdrop at y 500 of 1125 (the row that shows the left of the frame is still
+	 * bright halfway down, which a top-to-bottom ramp would not).
 	 *
 	 * <p>That row is also the row the right-hand option bar sits on, so x 0.60–0.70 of it was
 	 * unreadable there. The profile steps from 0.50 straight to 0.80 across the hole rather
@@ -206,7 +206,7 @@ public final class PingSettingsScreen extends Screen {
 
 	/**
 	 * The scroll rail: x 88–133 of the frame, so the track is the {@code VIDEO} pill's own
-	 * x and width — 0.0440 to 0.0665 — reused for the {@code AUDIO} track-plus-thumb, which
+	 * x and width (0.0440 to 0.0665) reused for the {@code AUDIO} track-plus-thumb, which
 	 * is what a list longer than its window needs. See the class note on the disagreement.
 	 */
 	private static final float RAIL_X = 0.0440F;
@@ -234,7 +234,7 @@ public final class PingSettingsScreen extends Screen {
 	private static final float LIST_PITCH = 0.0853F;
 
 	/**
-	 * The tick bar's top, 33 capture pixels below the row's label ink — a third of the row
+	 * The tick bar's top, 33 capture pixels below the row's label ink: a third of the row
 	 * pitch, so it lands under the value.
 	 *
 	 * <p>It is kept as the fraction of the window it was measured as, which is this class's
@@ -264,7 +264,7 @@ public final class PingSettingsScreen extends Screen {
 	 * is centred.
 	 *
 	 * <p>Every value in the capture has its ink centre within half a pixel of x 823, and
-	 * (654 + 992) / 2 is 823 — so the column is one measurement doing two jobs rather than
+	 * (654 + 992) / 2 is 823, so the column is one measurement doing two jobs rather than
 	 * two numbers that happen to be near each other. The solid sliders run wider than this,
 	 * from x 610, but no row here draws one and the ticks are what the column has to fit.
 	 */
@@ -289,7 +289,7 @@ public final class PingSettingsScreen extends Screen {
 	 * <p>The stroke's core reads {@code #CCD9FD} down the left of the box and
 	 * {@code #A5B6C6} down the right, and both the top and bottom bars are lighter where they
 	 * turn than where they run. No single translucent colour over this backdrop produces
-	 * that — the algebra does not close, checked channel by channel — so it is either a
+	 * that (the algebra does not close, checked channel by channel) so it is either a
 	 * gradient stroke or a bevel, and two frames cannot say which. The bluest reading is used
 	 * because the capture reads as a light-blue outline and this is what makes it read that
 	 * way.
@@ -316,7 +316,7 @@ public final class PingSettingsScreen extends Screen {
 	 * is the whole point of it existing: a paragraph is now clipped (and scrolled) inside a
 	 * fixed box, so a long description can never meet the list below it. Before this the
 	 * description was split to the panel width and drawn line after line with no ceiling,
-	 * and a long one ran into the options — the collision the captures were pulled up to fix.
+	 * and a long one ran into the options: the collision the captures were pulled up to fix.
 	 */
 	private static final float PANEL_BODY_H = 0.1863F;
 	private static final int PANEL_TITLE_INK = 0xFFFFFFFF;
@@ -356,7 +356,7 @@ public final class PingSettingsScreen extends Screen {
 	private static final float BUTTON_PAD = 0.0128F;
 
 	/**
-	 * The key badge's height, 23 capture pixels — but never less than a line of this font.
+	 * The key badge's height, 23 capture pixels, but never less than a line of this font.
 	 *
 	 * <p>The capture's badge is 23 pixels around a 17-pixel cap, which is three pixels of
 	 * padding a side. At this window the 23 capture pixels are about 7 GUI pixels, and the key
@@ -373,7 +373,7 @@ public final class PingSettingsScreen extends Screen {
 	 *
 	 * <p>Read off the capture and converted at the text's scale rather than the window's: the
 	 * single-letter {@code A} and {@code R} badges are 24 capture pixels wide around a key of
-	 * about 11, so 6.5 capture pixels each side, and the smallest cap in the frame is 17 — 6.5
+	 * about 11, so 6.5 capture pixels each side, and the smallest cap in the frame is 17, 6.5
 	 * over 17 of a cap, which at this screen's 1× cap is 2.7, rounded to 3. See
 	 * {@link #badgeWidth} for why the badge's own measured width cannot be used instead.
 	 */
@@ -395,7 +395,7 @@ public final class PingSettingsScreen extends Screen {
 	/**
 	 * The faint arrows scattered in the backdrop: right-pointing solid triangles.
 	 *
-	 * <p>Four were measured — a pair at the top-left (a 51 × 53 at x 58, y 517, and a
+	 * <p>Four were measured: a pair at the top-left (a 51 × 53 at x 58, y 517, and a
 	 * 13 × 13 at x 114, y 492), a 27 × 27 at x 1733, y 273 read off a zoomed crop of the
 	 * top-right, and a 31 × 28 at x 1190, y 919 from a scan of the bottom-middle. The frame
 	 * has more of them than are worth enumerating and this is not all of them: it is the set
@@ -417,7 +417,7 @@ public final class PingSettingsScreen extends Screen {
 	 * <p>Measured twice, in two very different parts of the frame: over the bright teal at
 	 * the top-left an arrow reads {@code #176289} on {@code #0D4560}, and over the dark navy
 	 * at the bottom one reads {@code #15162B} on {@code #0F1022}. The first is a lift of
-	 * +10/+29/+41 and the second of +6/+6/+9 — different lifts, but as a <em>ratio</em> both
+	 * +10/+29/+41 and the second of +6/+6/+9; different lifts, but as a <em>ratio</em> both
 	 * are the same number, about 1.42. So the arrows are a screen blend, which a 2D GUI has
 	 * no mode for; the nearest a plain fill can do is take the local backdrop, multiply it,
 	 * and draw the result opaque. The backdrop moves by a few units across any one arrow, so
@@ -430,7 +430,7 @@ public final class PingSettingsScreen extends Screen {
 	/**
 	 * The smallest cap height in the capture, in capture pixels: the tab name and the two
 	 * button labels, both 17. Every other size on this screen is that element's measured cap
-	 * divided by this one, drawn at that multiple of Minecraft's own font — so the ratios are
+	 * divided by this one, drawn at that multiple of Minecraft's own font, so the ratios are
 	 * measured and the absolute size is the game's, which is the only part of the two that
 	 * can be honoured at every GUI scale.
 	 */
@@ -443,7 +443,7 @@ public final class PingSettingsScreen extends Screen {
 	 *
 	 * <p>Checked against the mapped jar rather than remembered. {@code Font.lineHeight} is 9,
 	 * written as a literal in its constructor, and the glyph metrics place a bitmap glyph at
-	 * {@code getTop() = 7.0F − bearingTop} with a default bearing of 7 — so a glyph's ink starts
+	 * {@code getTop() = 7.0F − bearingTop} with a default bearing of 7, so a glyph's ink starts
 	 * on the {@code y} the run is drawn at, and the baseline is seven below it. Nine minus seven
 	 * is the two pixels of descent, which is why {@link #textBox} adds a couple of pixels of
 	 * slack under every line it clips. The capture agrees independently: the row labels are
@@ -524,14 +524,14 @@ public final class PingSettingsScreen extends Screen {
 	 * <p>A number carries its own range and step, and every write passes through
 	 * {@link PingConfig}, which clamps a second time against a hand-edited file. A colour is a
 	 * number with a fixed palette rather than a free picker: the palette is the set the code
-	 * already names — the author's own colour ({@code 0}), the {@code #E8383D} the danger
+	 * already names: the author's own colour ({@code 0}), the {@code #E8383D} the danger
 	 * marker has always been, and the measured Fortnite beam cyan {@code #00B1EF}.
 	 */
 	private enum Setting {
 		CHAT(Group.GAMEPLAY, "Pings Over Chat",
 				"Whether a placed ping is broadcast to other players running the mod. Pings "
-						+ "reach them through chat — the only channel that works with nothing "
-						+ "installed server-side — so with this on, a ping is a real chat message "
+						+ "reach them through chat, the only channel that works with nothing "
+						+ "installed server-side, so with this on, a ping is a real chat message "
 						+ "that anyone on the server can see.",
 				() -> PingConfig.sendPingsOverChat() ? 1.0D : 0.0D,
 				value -> PingConfig.setSendPingsOverChat(value != 0.0D)),
@@ -619,8 +619,8 @@ public final class PingSettingsScreen extends Screen {
 				new String[] { "AUTHOR COLOUR", "DANGER RED", "FORTNITE CYAN" }),
 
 		BEAM_COLOUR(Group.BEAM, "Beam Colour",
-				"The colour of the world beam over a marker. Fortnite's beam contains no red — "
-						+ "it is always blue-cyan regardless of the marker — but this build "
+				"The colour of the world beam over a marker. Fortnite's beam contains no red: "
+						+ "it is always blue-cyan regardless of the marker, but this build "
 						+ "tints it to the author by default. Marker Colour follows the marker; "
 						+ "Fortnite Cyan is the measured #00B1EF.",
 				() -> (double) PingConfig.beamColour(),
@@ -830,7 +830,7 @@ public final class PingSettingsScreen extends Screen {
 		}
 
 		/**
-		 * The positions the option list should show — all of them when the setting has few,
+		 * The positions the option list should show: all of them when the setting has few,
 		 * otherwise a window around the current one so the list never grows past
 		 * {@link #OPTION_MAX_ROWS}.
 		 */
@@ -915,7 +915,7 @@ public final class PingSettingsScreen extends Screen {
 		readout(graphics, width, height, now);
 
 		// Nothing is registered with init() today, but widget render states only ever run from
-		// here — this stays so a widget added later cannot be silently invisible.
+		// here. This stays so a widget added later cannot be silently invisible.
 		super.extractRenderState(graphics, mouseX, mouseY, partialTick);
 	}
 
@@ -984,7 +984,7 @@ public final class PingSettingsScreen extends Screen {
 	 * The tab bar and its one chip.
 	 *
 	 * <p>The capture's bar is 1207 pixels wide and holds twelve chips on a 100 pixel pitch.
-	 * The bar is drawn at its measured span and the chips are not — this mod has one settings
+	 * The bar is drawn at its measured span and the chips are not: this mod has one settings
 	 * screen, and inventing eleven more would be inventing eleven screens. The chip is
 	 * therefore the first slot's, which is exactly where the capture's own active tab sits.
 	 */
@@ -1078,7 +1078,7 @@ public final class PingSettingsScreen extends Screen {
 					focused ? LABEL_FOCUS_INK : LABEL_IDLE_INK, now, labelScale, false, true);
 
 			// The value is a smaller cap than its label, so it starts lower for the two to end
-			// on one baseline — and the tick bar below it is the row's one chrome element, left
+			// on one baseline, and the tick bar below it is the row's one chrome element, left
 			// where the capture measured it.
 			int valueY = shareBaseline(y, labelScale, valueScale);
 
@@ -1114,9 +1114,9 @@ public final class PingSettingsScreen extends Screen {
 	/**
 	 * The segmented tick bar under a value.
 	 *
-	 * <p>The capture uses one of these for every value chosen from a list — three positions
+	 * <p>The capture uses one of these for every value chosen from a list: three positions
 	 * for Window Mode and Rendering Mode, eight for Resolution, eleven for Frame Rate Limit,
-	 * two for Vsync and for Sound Quality — with the current position drawn white and the
+	 * two for Vsync and for Sound Quality, with the current position drawn white and the
 	 * rest {@code #70747D}. So the count is the number of options and a boolean's is two. The
 	 * ratio of a segment to its slot measured 0.81 at three positions, 0.84 at eight and 0.85
 	 * at eleven; {@link #TICK_FILL} is the eight-to-eleven reading, because two positions is
@@ -1170,7 +1170,7 @@ public final class PingSettingsScreen extends Screen {
 		int y = span(OPTION_Y, height) + row * span(OPTION_PITCH, height);
 		float scale = capScale(CAP_BODY);
 
-		// The bar is the row's box, so its line centres on the bar — the capture's option text
+		// The bar is the row's box, so its line centres on the bar: the capture's option text
 		// sits in the middle of its 42-pixel slab, and the current option's own bar is what
 		// makes that visible.
 		int textY = centredTop(y, barH, scale);
@@ -1199,7 +1199,7 @@ public final class PingSettingsScreen extends Screen {
 	 *
 	 * <p>That is the capture's own rule rather than a convenience. Its {@code RESTORE TO
 	 * DEFAULT} and {@code BACK} sit at exactly the same x in both frames, while
-	 * {@code APPLY} exists in one — which can only happen if the row is built from the right
+	 * {@code APPLY} exists in one, which can only happen if the row is built from the right
 	 * and the widths come from the labels.
 	 */
 	private void buttons(GuiGraphicsExtractor graphics, int width, int height, long now) {
@@ -1221,7 +1221,7 @@ public final class PingSettingsScreen extends Screen {
 		return new int[] { backX, back, backX - span(BUTTON_GAP, width) - restore, restore };
 	}
 
-	/** A pill is its padding, its key badge, a gap and its label — which is where its width comes from. */
+	/** A pill is its padding, its key badge, a gap and its label, which is where its width comes from. */
 	private int pillWidth(int width, String badge, Component label) {
 		float scale = capScale(CAP_TAB);
 
@@ -1233,7 +1233,7 @@ public final class PingSettingsScreen extends Screen {
 	 * The key badge's width: its key, plus the capture's own padding a side.
 	 *
 	 * <p>Not the measured badges themselves. The two that exist are 24 capture pixels wide for
-	 * the one-letter {@code A} and {@code R} and 46 for {@code ESC} — and the note over them
+	 * the one-letter {@code A} and {@code R} and 46 for {@code ESC}, and the note over them
 	 * says what those numbers are: eleven pixels per extra letter <em>of what the key needs at
 	 * the capture's own cap height</em>. That derivation does not survive the size substitution
 	 * this screen makes everywhere else: the key is drawn at the game's own cap, roughly two and
@@ -1241,7 +1241,7 @@ public final class PingSettingsScreen extends Screen {
 	 * pixels of window is narrower than the key inside it. It was, and the key was clipped to
 	 * the dark blob the capture's badge has no business hiding. The width is therefore the key's
 	 * own at this screen's cap and the pill grows to take it, which is the capture's own rule
-	 * for the row — its buttons are laid out from the right edge precisely because their widths
+	 * for the row: its buttons are laid out from the right edge precisely because their widths
 	 * come from what they hold.
 	 */
 	private int badgeWidth(String badge, float scale) {
@@ -1258,8 +1258,8 @@ public final class PingSettingsScreen extends Screen {
 
 		// One line for the whole pill. The key and the label are the same size in two boxes, and
 		// a button reads as one thing only if they stand on one baseline: both are placed from
-		// the pill's own centred line, and the badge — which is chrome, and is centred on the
-		// same ink — is drawn around the key that line puts there.
+		// the pill's own centred line, and the badge, which is chrome, and is centred on the
+		// same ink, is drawn around the key that line puts there.
 		int textY = centredTop(y, pillH, scale);
 		int badgeY = Math.round(textY + inkHeight(scale) / 2.0F - badgeH / 2.0F);
 
@@ -1336,8 +1336,8 @@ public final class PingSettingsScreen extends Screen {
 		}
 
 		// An option in the panel sets that position outright; a row steps to the next one. Both
-		// are the capture's behaviour — its rows carry ‹ and › precisely because clicking one
-		// moves it — and every write goes through PingConfig, so the file follows immediately.
+		// are the capture's behaviour: its rows carry ‹ and › precisely because clicking one
+		// moves it, and every write goes through PingConfig, so the file follows immediately.
 		int option = optionAt(event.x(), event.y());
 
 		if (option >= 0) {
@@ -1486,7 +1486,7 @@ public final class PingSettingsScreen extends Screen {
 	/**
 	 * The setting under the pointer, or -1.
 	 *
-	 * <p>The target is the focus box, so the rows tile the way their boxes do — a row does
+	 * <p>The target is the focus box, so the rows tile the way their boxes do, a row does
 	 * not own the bare backdrop below its own box. Headings are not targets.
 	 */
 	private int rowAt(double x, double y) {
@@ -1562,7 +1562,7 @@ public final class PingSettingsScreen extends Screen {
 		return measuredCap / CAP_ANCHOR;
 	}
 
-	/** The height one line's ink occupies at a given size — the ascent, not the whole line box. */
+	/** The height one line's ink occupies at a given size (the ascent, not the whole line box). */
 	private static float inkHeight(float scale) {
 		return FONT_ASCENT * scale;
 	}
@@ -1581,7 +1581,7 @@ public final class PingSettingsScreen extends Screen {
 	 * top edge sits against that edge and leaves the whole padding of the container below
 	 * itself. The chip, the key badge, the button label and the option list are all texts held
 	 * by a measured box, so all four centre on it; a text whose {@code y} is its own ink
-	 * position from the capture — a row label, a heading, a panel line — is drawn at that
+	 * position from the capture (a row label, a heading, a panel line) is drawn at that
 	 * position instead and never comes through here.
 	 */
 	private static int centredTop(int boxTop, int boxHeight, float scale) {
@@ -1594,7 +1594,7 @@ public final class PingSettingsScreen extends Screen {
 	 *
 	 * <p>The result is proportional to the ascent and to the difference in the two sizes, which
 	 * is the whole point: two lines of different cap heights share a line only by their
-	 * baselines, and the gap between their tops is the cap difference times the ascent — not a
+	 * baselines, and the gap between their tops is the cap difference times the ascent, not a
 	 * number read off a capture and applied as a fraction of the window, which only lands in the
 	 * right GUI pixel when the window happens to be the height it was read at. A label and its
 	 * value are 21.5 and 19.5 capture pixels of cap, so the value starts 0.82 pixels lower; it
@@ -1607,7 +1607,7 @@ public final class PingSettingsScreen extends Screen {
 	/**
 	 * The box a single line of a measured cap height needs to be clipped to without cutting its
 	 * ink: a whole line box, plus a pixel either side for the shadow's fringe. It is a clip, not
-	 * a placement — the ink inside it is only {@link #inkHeight} tall, and where that ink goes
+	 * a placement: the ink inside it is only {@link #inkHeight} tall, and where that ink goes
 	 * is {@link #centredTop} or the capture's own {@code y}.
 	 */
 	private int textBox(float measuredCap) {
@@ -1716,23 +1716,23 @@ public final class PingSettingsScreen extends Screen {
 	 *
 	 * <p>This is the screen's single entry point for a string: every label, value, heading
 	 * and button label goes through it, so nothing can draw outside the box it was given. The
-	 * clip is {@link GuiGraphicsExtractor#enableScissor} — verified against the mapped jar,
+	 * clip is {@link GuiGraphicsExtractor#enableScissor} (verified against the mapped jar,
 	 * where it pushes a {@code ScreenRectangle} onto a {@code ScissorStack} and
-	 * {@link GuiGraphicsExtractor#disableScissor} pops it — and the pair is always balanced,
+	 * {@link GuiGraphicsExtractor#disableScissor} pops it), and the pair is always balanced,
 	 * including when the text fits and there is nothing to scroll, because a scissor left
 	 * enabled would erase the rest of the HUD.
 	 *
 	 * <p>When the text is wider than the box it becomes a marquee: it rests at the start, then
 	 * slides left at a slow, readable pace, wraps, and rests again, all driven from
 	 * {@code now} rather than held as state, so two strings in two boxes never fight over a
-	 * shared field. {@code centre} centres text that fits — which is what every value in the
-	 * capture does — and lets a long one start from the left edge instead of scrolling out of
+	 * shared field. {@code centre} centres text that fits (which is what every value in the
+	 * capture does), and lets a long one start from the left edge instead of scrolling out of
 	 * a position it never held.
 	 *
 	 * <p>{@code y} is where the line's <em>ink</em> begins, which for this font is also the top
 	 * of its line box ({@link #FONT_ASCENT}). A caller with a measured ink position passes it
 	 * unchanged; a caller whose text is held by a box passes {@link #centredTop} of that box.
-	 * The height is the clip and nothing else — it never moves the text — so handing this
+	 * The height is the clip and nothing else (it never moves the text), so handing this
 	 * method a container's height and expecting the line to settle into the middle of it does
 	 * nothing, which is exactly what four of the held texts on this screen used to be caught by.
 	 */
@@ -1764,7 +1764,7 @@ public final class PingSettingsScreen extends Screen {
 	/**
 	 * A wrapped paragraph clipped to a fixed box, scrolled vertically when it is taller than
 	 * the box. This is the description's form: the body box ends above the option list, so no
-	 * description, however long, can reach the list — which is the overlap this screen was
+	 * description, however long, can reach the list, which is the overlap this screen was
 	 * rebuilt to remove. The marquee runs top-to-bottom rather than left-to-right because a
 	 * paragraph is read in lines.
 	 */
@@ -1823,7 +1823,7 @@ public final class PingSettingsScreen extends Screen {
 	 * <p>The scale goes through the pose stack because that is where this build's text draw
 	 * reads it: {@code GuiGraphicsExtractor.text} snapshots the current matrix into its
 	 * {@code GuiTextRenderState}, so text is the one draw call that can be resized without a
-	 * texture of its own. The translate is unbaked for the same reason — a fractional origin
+	 * texture of its own. The translate is unbaked for the same reason: a fractional origin
 	 * would otherwise be rounded away.
 	 */
 	private void text(GuiGraphicsExtractor graphics, Component string, float x, float y, int colour, float scale,

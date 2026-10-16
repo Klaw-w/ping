@@ -24,7 +24,7 @@ import net.minecraft.world.level.material.MapColor;
  *
  * <p>This is the one genuinely new subsystem the minimap needs: everything else is
  * drawing. For every column of a chunk it finds the highest block and takes that block's
- * own {@link MapColor} — the same colours vanilla maps use, which is what makes the map
+ * own {@link MapColor}: the same colours vanilla maps use, which is what makes the map
  * agree with the world it describes instead of being a palette invented here.
  *
  * <p>Sampling is costed deliberately. A 384-block-wide map is 147,456 columns if every
@@ -38,7 +38,7 @@ import net.minecraft.world.level.material.MapColor;
  * seconds. That is the trade for staying mixin-free, which this mod is.
  *
  * <p>Heightmap availability is not assumed. Which heightmaps a server ships to the client
- * is server-side policy — {@code Heightmap.Types.sendToClient()} decides — so the best
+ * is server-side policy ({@code Heightmap.Types.sendToClient()} decides), so the best
  * available one is picked at sample time, preferring the surface, and a chunk with none at
  * all simply samples as unknown.
  */
@@ -98,7 +98,7 @@ final class MinimapTerrain {
 		int sampled = 0;
 
 		// Missing tiles first: a map that has just opened should fill before it starts
-		// re-reading what it already has. Only loaded chunks are worth sampling — an
+		// re-reading what it already has. Only loaded chunks are worth sampling: an
 		// unloaded one has nothing to say and would only record "unknown" over ground that
 		// may already be remembered.
 		for (int dz = -half; dz <= half && sampled < budget; dz++) {
@@ -198,7 +198,7 @@ final class MinimapTerrain {
 	 *
 	 * <p>This is what a "POI" is on this map: a name is drawn at the middle of a run of
 	 * chunks that share a biome, so the label belongs to the region rather than to the
-	 * player. Regions smaller than {@link MinimapConstants#MIN_BIOME_CHUNKS} are dropped —
+	 * player. Regions smaller than {@link MinimapConstants#MIN_BIOME_CHUNKS} are dropped:
 	 * a one-chunk patch of river bank does not deserve a caption in the middle of the map.
 	 *
 	 * <p>Cached, and recomputed at most once a second: the cache changes constantly as
@@ -309,7 +309,7 @@ final class MinimapTerrain {
 		String biome = biomeName(level, originX + TILE / 2, originZ + TILE / 2);
 
 		// One reusable position for the whole chunk. Ten chunks a tick is 2,560 columns, and
-		// a fresh BlockPos per column is 2,560 objects a tick for no reason — the block getter
+		// a fresh BlockPos per column is 2,560 objects a tick for no reason: the block getter
 		// does not keep it.
 		BlockPos.MutableBlockPos pos = new BlockPos.MutableBlockPos();
 
@@ -319,7 +319,7 @@ final class MinimapTerrain {
 			//
 			// The west neighbour is read across the chunk boundary as well. Carrying a height
 			// only *within* a chunk meant every chunk's first column fell back to unshaded,
-			// which painted a visible 16-block grid over the whole map — the "invisible grid"
+			// which painted a visible 16-block grid over the whole map, the "invisible grid"
 			// a player sees as the map snapping.
 			int previous = westHeight(level, surface, chunkX, chunkZ, z);
 			boolean hasPrevious = previous != TerrainHeight.UNKNOWN;

@@ -34,7 +34,7 @@ import org.slf4j.LoggerFactory;
  *
  * <p>The whole mod is client side. It declares {@code "environment": "client"} so a
  * server never loads it, which also means it cannot relay pings between players on its
- * own — see {@link PingLink} for how it gets around that.
+ * own: see {@link PingLink} for how it gets around that.
  */
 public class PingClient implements ClientModInitializer {
 	public static final String MOD_ID = "ping";
@@ -141,7 +141,7 @@ public class PingClient implements ClientModInitializer {
 	/**
 	 * Posts queued ping lines into chat.
 	 *
-	 * <p>The feed is not a second widget beside chat — it <em>is</em> chat. Fortnite's
+	 * <p>The feed is not a second widget beside chat: it <em>is</em> chat. Fortnite's
 	 * Message Feed and Minecraft's chat occupy the same corner and do the same job, so
 	 * rather than stacking a HUD element on top of the window, each ping becomes a local
 	 * chat message and the two stop being two things.

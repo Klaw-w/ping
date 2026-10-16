@@ -44,7 +44,7 @@ public final class PingKeys {
 	 * Opens the full-size map, which is also where a ping is placed by pointing at it
 	 * rather than by aiming.
 	 *
-	 * <p>Default {@code M}, which vanilla leaves free — its own map handling is the held
+	 * <p>Default {@code M}, which vanilla leaves free: its own map handling is the held
 	 * map item, not a screen.
 	 */
 	public static final KeyMapping PING_MAP = KeyMappingHelper.registerKeyMapping(new KeyMapping(
@@ -71,8 +71,8 @@ public final class PingKeys {
 	 *
 	 * <p>Default {@code J}. Measured against the 26.2 jar rather than guessed: vanilla binds
 	 * {@code W A S D E F Q T O P L G C X} and the digit row, plus F-keys and the debug
-	 * combos, and {@code J} is not among them. {@code P} was the first choice and had to go
-	 * — vanilla gives it to {@code key.socialInteractions}, which would have fired alongside
+	 * combos, and {@code J} is not among them. {@code P} was the first choice and had to go;
+	 * vanilla gives it to {@code key.socialInteractions}, which would have fired alongside
 	 * this and made the screen open only by luck.
 	 */
 	public static final KeyMapping PING_SETTINGS = KeyMappingHelper.registerKeyMapping(new KeyMapping(

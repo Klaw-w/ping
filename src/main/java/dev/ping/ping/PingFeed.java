@@ -10,12 +10,12 @@ import java.util.List;
  *
  * <p>Deliberately Minecraft-free, like {@link PingManager}, so the wording and the de-duping
  * can be reasoned about without a client. The client drains this once a tick and turns each
- * line into a chat message — the feed and chat are one thing here, not two, so this is a
+ * line into a chat message: the feed and chat are one thing here, not two, so this is a
  * queue rather than something that holds state on screen.
  *
  * <p>Fortnite calls this the Message Feed and reuses it for eliminations; this is only the
  * marker half of it. The wording is Fortnite's own, taken from the strings published for
- * Squad Comms — "marked an enemy location", "marked a destination" — rather than invented
+ * Squad Comms: "marked an enemy location", "marked a destination", rather than invented
  * here.
  */
 public final class PingFeed {

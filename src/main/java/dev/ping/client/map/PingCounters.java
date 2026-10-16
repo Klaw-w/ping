@@ -8,7 +8,7 @@ import net.minecraft.stats.Stats;
  *
  * <p>Both are read from data the client already has, rather than tracked here. That matters
  * more than it sounds: a hand-rolled kill counter cannot be made correct on the client,
- * because no clientbound packet carries the killer — not the death packet, not entity
+ * because no clientbound packet carries the killer, not the death packet, not entity
  * removal. The server's own statistic is the only honest source, and the client holds a
  * live copy of it.
  */
@@ -36,7 +36,7 @@ final class PingCounters {
 	 *
 	 * <p>{@code minecraft:player_kills}, read from the player's own stats. The server keeps
 	 * that authoritative and pushes changes to the client, so this is the same number the
-	 * statistics screen shows — and it is per world or server profile rather than per
+	 * statistics screen shows, and it is per world or server profile rather than per
 	 * session, which is what "kills in that world" means.
 	 *
 	 * <p>A player-kills-only counter reads zero in singleplayer and on any server with no

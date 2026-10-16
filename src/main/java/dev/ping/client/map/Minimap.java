@@ -71,7 +71,7 @@ public final class Minimap {
 	 * How much world the terrain cache has to cover right now.
 	 *
 	 * <p>The full-size map can be zoomed further out than the corner minimap, and it shares
-	 * this cache — so while it is open it asks for its own range, and the cache samples
+	 * this cache, so while it is open it asks for its own range, and the cache samples
 	 * whichever of the two is wider.
 	 */
 	public void setScreenRange(int blocksAcross) {

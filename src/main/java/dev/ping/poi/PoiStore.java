@@ -17,8 +17,8 @@ import net.fabricmc.loader.api.FabricLoader;
  *
  * <p>Keyed by world, because a named place belongs to the world it was named in: the same
  * coordinates on a different server are a different place, and a singleplayer world's
- * names have no business turning up on a server. The key is decided by the caller — see
- * {@code ClientPois} — and is opaque here.
+ * names have no business turning up on a server. The key is decided by the caller (see
+ * {@code ClientPois}), and is opaque here.
  *
  * <p>The file is written on every change rather than on shutdown, so a crash cannot lose a
  * location the player just typed.

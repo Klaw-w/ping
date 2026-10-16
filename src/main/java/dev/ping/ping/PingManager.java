@@ -14,15 +14,15 @@ import net.minecraft.world.phys.Vec3;
  * whatever it managed to resolve, so this class stays trivially testable and does not
  * churn when the render or level APIs move.
  *
- * <p>Fortnite keeps one world marker per player — marking again moves your existing
- * marker rather than adding a second one — so this is keyed by author.
+ * <p>Fortnite keeps one world marker per player (marking again moves your existing
+ * marker rather than adding a second one), so this is keyed by author.
  */
 public final class PingManager {
 	private final Map<UUID, Ping> byAuthor = new LinkedHashMap<>();
 
 	/**
-	 * The corner feed. Recorded here rather than at the call sites because every marker —
-	 * placed here or received over chat — arrives through {@link #place}, so this is the
+	 * The corner feed. Recorded here rather than at the call sites because every marker,
+	 * placed here or received over chat, arrives through {@link #place}, so this is the
 	 * one place that cannot miss one.
 	 */
 	private final PingFeed feed = new PingFeed();

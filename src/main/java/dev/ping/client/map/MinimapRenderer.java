@@ -21,8 +21,8 @@ import org.joml.Matrix3x2fStack;
 /**
  * Draws a map: terrain, then what is on it.
  *
- * <p>Shared by the corner minimap and the full-size map. The chrome around the map — the
- * readout column and the location label — is drawn by the corner only, because Fortnite's
+ * <p>Shared by the corner minimap and the full-size map. The chrome around the map (the
+ * readout column and the location label) is drawn by the corner only, because Fortnite's
  * full map screen is a different design, not a bigger copy of this one.
  *
  * <p>The glyphs are the real ones, pulled from a capture at native resolution: the player's
@@ -33,7 +33,7 @@ import org.joml.Matrix3x2fStack;
  * <p>What the map shows is Fortnite's set: markers in their author colours, item marks with
  * their icon, threat marks as the skull-on-disc Fortnite draws, and a marker past the frame
  * pulled to the edge rather than dropped. What it deliberately does not show is other
- * players — Fortnite hides everyone who has not been marked, and a map that quietly
+ * players, Fortnite hides everyone who has not been marked, and a map that quietly
  * revealed every player in range would be a radar rather than a ping system.
  */
 public final class MinimapRenderer {
@@ -49,7 +49,7 @@ public final class MinimapRenderer {
 	 * Source sizes, one per asset, passed to the blit so it can normalise the UVs.
 	 *
 	 * <p>Each asset is shipped at 4× its extracted size with smoothing, so that drawing it
-	 * small averages four samples per output pixel instead of dropping three of them — the
+	 * small averages four samples per output pixel instead of dropping three of them: the
 	 * difference between an icon that looks low-resolution and one that looks drawn. The
 	 * numbers below are the shipped assets' own dimensions.
 	 */
@@ -169,7 +169,7 @@ public final class MinimapRenderer {
 	 * White text with a one-pixel black edge.
 	 *
 	 * <p>Used instead of Minecraft's drop shadow, which draws the whole glyph again one pixel
-	 * away — at the readouts' reduced size that fills the counter of a "0" and turns a digit
+	 * away, at the readouts' reduced size that fills the counter of a "0" and turns a digit
 	 * into a blob. An edge keeps the letterform intact while still reading over any terrain.
 	 */
 	static void drawOutlinedText(GuiGraphicsExtractor graphics, Minecraft client, String text, int x, int y) {
@@ -227,8 +227,8 @@ public final class MinimapRenderer {
 			int textWidth = client.font.width(text);
 			float scale = MinimapConstants.READOUT_TEXT_SCALE;
 			float anchorX = textEdge - textWidth;
-			// The ink sits below the middle of a text line — a line is 9px tall but the glyphs
-			// are about 7 — so centring the line leaves the number riding high beside its icon.
+			// The ink sits below the middle of a text line (a line is 9px tall but the glyphs
+			// are about 7) so centring the line leaves the number riding high beside its icon.
 			float anchorY = centreY - client.font.lineHeight * 0.5F + 1.0F;
 
 			Matrix3x2fStack pose = graphics.pose();
@@ -320,14 +320,14 @@ public final class MinimapRenderer {
 		}
 	}
 
-	/** The player's own pointer, drawn where the player is — not at the map's middle. */
+	/** The player's own pointer, drawn where the player is, not at the map's middle. */
 	private static void drawPlayer(GuiGraphicsExtractor graphics, Minecraft client, MapViewport viewport) {
 		if (client.player == null) {
 			return;
 		}
 
 		// The player's world position, not the viewport's centre. The map can be dragged, and
-		// at that point the centre of the frame is nowhere near the player — drawing the
+		// at that point the centre of the frame is nowhere near the player, drawing the
 		// pointer at the centre made it slide around the map on its own.
 		drawArrow(graphics, viewport.screenX(client.player.getX()), viewport.screenY(client.player.getZ()),
 				MinimapConstants.PLAYER_ARROW_FRACTION * graphics.guiHeight(),
@@ -470,7 +470,7 @@ public final class MinimapRenderer {
 	 * The threat marker: Fortnite's white skull on a crimson disc.
 	 *
 	 * <p>Drawn from two assets rather than one, so the disc carries the colour and the skull
-	 * stays white on top of it — which is how the capture reads, and which means the marker
+	 * stays white on top of it, which is how the capture reads, and which means the marker
 	 * still works if the threat colour is ever made configurable.
 	 */
 	private static void drawThreatMarker(GuiGraphicsExtractor graphics, float x, float y, float alpha) {
@@ -487,8 +487,8 @@ public final class MinimapRenderer {
 	/**
 	 * The drawn height of a glyph inside its box.
 	 *
-	 * <p>Both readout glyphs are taller than they are wide — the skull is 27×32 and the bust
-	 * 20×21 in the capture — so drawing both square would squash them.
+	 * <p>Both readout glyphs are taller than they are wide (the skull is 27×32 and the bust
+	 * 20×21 in the capture) so drawing both square would squash them.
 	 */
 	private static float glyphAspect(int textureSize) {
 		return textureSize == PERSON_SIZE ? PERSON_ASPECT : SKULL_ASPECT;

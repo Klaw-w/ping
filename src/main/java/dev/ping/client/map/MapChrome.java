@@ -73,7 +73,7 @@ public final class MapChrome {
 	 * The tab strip's labels.
 	 *
 	 * <p>Only the map. The capture has Quests, Characters and Accolades alongside it, and an
-	 * earlier revision drew all four to match — but three of them led nowhere, and a tab that
+	 * earlier revision drew all four to match, but three of them led nowhere, and a tab that
 	 * does nothing is a lie told in the shape of a button. Matching the capture exactly is
 	 * worth less than not pretending.</p>
 	 */
@@ -250,7 +250,7 @@ public final class MapChrome {
 	 * The map's rectangle, centred on the window.
 	 *
 	 * <p>The capture has the map filling most of a 16:9 frame, so its fractions were taken
-	 * from there — but placing it by fractions of the window height alone put it near the
+	 * from there, but placing it by fractions of the window height alone put it near the
 	 * top on any window that is not that shape. It is centred instead, at the point the
 	 * capture centres it (48.3% across, 54.3% down), and sized to whichever of the two axes
 	 * runs out first.

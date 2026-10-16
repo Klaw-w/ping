@@ -32,7 +32,7 @@ import net.minecraft.world.phys.Vec3;
  *
  * <p>The technique is lifted from vanilla's beacon beam: a hollow column of four quads,
  * submitted as custom geometry into the level's translucent phase. Geometry is submitted
- * in absolute world coordinates — the camera-relative transform is applied later — so the
+ * in absolute world coordinates (the camera-relative transform is applied later), so the
  * only transform needed here is a translation to the marked point.
  *
  * <p>Vanilla's own {@code BeaconRenderer.submitBeaconBeam} is the reference for the
@@ -109,9 +109,9 @@ public final class PingBeamRenderer {
 	 * Submits one hollow column: four side quads, no caps, drawn in the translucent phase.
 	 *
 	 * <p>The translation is <b>camera-relative</b>. The level renderer submits everything
-	 * that way — {@code LevelRenderer.submitBlockEntities} translates by
-	 * {@code blockPos - cameraPos}, and entity submission passes {@code entityPos - cameraPos}
-	 * — and the model-view expects it. Absolute world coordinates put the geometry a whole
+	 * that way ({@code LevelRenderer.submitBlockEntities} translates by
+	 * {@code blockPos - cameraPos}, and entity submission passes {@code entityPos - cameraPos}),
+	 * and the model-view expects it. Absolute world coordinates put the geometry a whole
 	 * camera position away from where it belongs.
 	 */
 	private static void submitColumn(SubmitNodeCollector collector, PoseStack pose, Vec3 cameraPos, Vec3 base,

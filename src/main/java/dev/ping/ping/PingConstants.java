@@ -11,7 +11,7 @@ import dev.ping.client.PingConfig;
  *
  * <p>The values a player can change on the settings screen are no longer here: they live in
  * {@link PingConfig}, which is the store the screen writes. What remains is the fixed
- * scaffolding — animation lengths, hit-test cosines, texture dimensions — plus the two beam
+ * scaffolding: animation lengths, hit-test cosines, texture dimensions, plus the two beam
  * helpers, which read their tunables from {@code PingConfig} at call time.
  */
 public final class PingConstants {
@@ -75,7 +75,7 @@ public final class PingConstants {
 	 * straight up the screen, and it foreshortens as you look up and down. Drawing it as
 	 * an axis-aligned stripe looked wrong at any camera angle other than level.
 	 *
-	 * <p>The small one is always present — it is simply too short to make out at range,
+	 * <p>The small one is always present; it is simply too short to make out at range,
 	 * which is why it looks like the beam only appears once you back off. The large one is
 	 * a long-range signpost and only fades in past {@link PingConfig#beamFadeNear()}.
 	 */
@@ -134,7 +134,7 @@ public final class PingConstants {
 
 	/**
 	 * How closely you must be looking at a marker for it to count as "the one you are
-	 * looking at" — drawn solid through terrain, and showing its context block. Slightly
+	 * looking at", drawn solid through terrain, and showing its context block. Slightly
 	 * wider than {@link #UNPING_COS}. About 4 degrees.
 	 */
 	public static final double LOOK_CONE_COS = 0.9976D;

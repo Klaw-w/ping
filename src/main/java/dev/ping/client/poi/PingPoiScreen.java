@@ -16,8 +16,8 @@ import net.minecraft.network.chat.Component;
  * a banner that already has a name fills the box with it and adds a Delete button, so the
  * three things you can do to a named location are all in the place you already went to.
  *
- * <p>The chrome is the same measured palette the map screen uses — the blue gradient, the
- * same white-on-blue text — so a location name is made in a screen that belongs to the rest
+ * <p>The chrome is the same measured palette the map screen uses (the blue gradient, the
+ * same white-on-blue text), so a location name is made in a screen that belongs to the rest
  * of the mod rather than to vanilla. The buttons and the text box are vanilla widgets on
  * purpose: a text field is the one control where matching vanilla's feel is worth more than
  * matching a colour scheme, because it is the only thing here the player types into.

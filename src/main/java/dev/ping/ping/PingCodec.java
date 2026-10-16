@@ -51,7 +51,7 @@ public final class PingCodec {
 	private static final String BODY_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789-_";
 
 	/**
-	 * {@code type(1) | x(2) | y(2) | z(2)} — the smallest a valid payload may be. A
+	 * {@code type(1) | x(2) | y(2) | z(2)}: the smallest a valid payload may be. A
 	 * clear message is exactly this long, and it is what a placement written by an
 	 * earlier build of the mod, with no item segment, looks like.
 	 */
@@ -60,7 +60,7 @@ public final class PingCodec {
 	/** Everything up to and including the item id length byte. */
 	private static final int HEADER = 8;
 
-	/** Start of the item id — immediately after that fixed prefix. */
+	/** Start of the item id: immediately after that fixed prefix. */
 	private static final int ITEM_ID = HEADER;
 
 	private static final int COORD_OFFSET = 32768;
@@ -79,8 +79,8 @@ public final class PingCodec {
 	 * True if this text carries a ping.
 	 *
 	 * <p>Deliberately searches for the fence rather than requiring it at the start. The
-	 * component handed to the receive event may be the decorated form the server sent —
-	 * {@code "<Player> #pp#..."} — in which case a {@code startsWith} check silently
+	 * component handed to the receive event may be the decorated form the server sent,
+	 * {@code "<Player> #pp#..."}, in which case a {@code startsWith} check silently
 	 * fails and the raw line shows up in chat.
 	 */
 	public static boolean isPingMessage(String raw) {
@@ -166,7 +166,7 @@ public final class PingCodec {
 
 	/**
 	 * Encodes a marker for the wire. The author is carried by the chat line itself and
-	 * the colour is re-derived on the receiving end, so neither is here — see
+	 * the colour is re-derived on the receiving end, so neither is here: see
 	 * {@link #decode} for what the marker ends up being drawn in.
 	 *
 	 * @param item the item being marked, or {@code null} when the marker is not one
@@ -210,8 +210,8 @@ public final class PingCodec {
 	/**
 	 * Decodes a pinged chat line into a marker this client can show.
 	 *
-	 * <p>The colour is derived on both sides from the same inputs — the author's locator
-	 * bar colour, and then the item's own colour for an item marker — which is exactly
+	 * <p>The colour is derived on both sides from the same inputs: the author's locator
+	 * bar colour, and then the item's own colour for an item marker, which is exactly
 	 * the work {@link dev.ping.client.PingController} did when it placed the
 	 * original. Paying that cost again here is what makes two clients agree on a marker
 	 * without spending payload bytes on a colour both could compute.

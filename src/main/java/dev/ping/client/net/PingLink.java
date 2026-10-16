@@ -23,13 +23,13 @@ import net.minecraft.world.phys.Vec3;
  * that works everywhere with nothing installed server-side is chat.
  *
  * <p>An outgoing ping is posted as a chat line with a {@code #pp#} marker and a small
- * binary payload — type, position, and the registry id of the item being marked. Every
+ * binary payload: type, position, and the registry id of the item being marked. Every
  * client running the mod recognises that marker, cancels the line so it never reaches
  * the chat HUD, and turns it back into a marker. Clients without the mod see a short
  * line of junk, and the server log records it.
  *
  * <p>Because {@code ALLOW_CHAT} returning false stops the message reaching the HUD, the
- * decode has to happen inside that same handler — the {@code CHAT} event is not fired
+ * decode has to happen inside that same handler: the {@code CHAT} event is not fired
  * for cancelled messages.
  *
  * <p>Sending is governed by {@link PingConfig#sendPingsOverChat()}. Incoming pings are

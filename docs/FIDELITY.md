@@ -15,7 +15,7 @@ Three crops share one pixel scale. Converting to a fraction of screen assumed a
 **1920×1080 frame**; if the capture was a different resolution, every "fraction of
 screen" number below scales with it. That assumption is the single biggest caveat here.
 
-## Measured — safe to build on
+## Measured: safe to build on
 
 ### The pin
 
@@ -24,7 +24,7 @@ screen" number below scales with it. That assumption is the single biggest cavea
 | Size | 18 × 28–30 px in-crop; **18 × 29** nominal |
 | Aspect (w/h) | 0.60–0.64 |
 | Height as fraction of screen | **2.7 %** |
-| Scales with distance? | **No.** Identical at 1 m, 18 m and 114 m — under 7 % variation across a 114× distance change |
+| Scales with distance? | **No.** Identical at 1 m, 18 m and 114 m, under 7 % variation across a 114× distance change |
 | Glow | **None.** Pixels outside the 2 px outline are plain background |
 | Outline | **2 px**, near-black (`#000A1E` waypoint, `#16041E` item) |
 | Inner hole | ∅ 6–7 px, circular, centred 8–8.5 px below the pin's top |
@@ -33,42 +33,42 @@ screen" number below scales with it. That assumption is the single biggest cavea
 | Horizontal anchor | **Centred on the beam axis / marked point** (verified in 4 crops, Δ ≤ 2.5 px) |
 
 The 18:29 aspect is carried by the artwork: the pin PNG is cropped to its content and
-centred in a square canvas, giving 0.61 — matching the measurement.
+centred in a square canvas, giving 0.61, matching the measurement.
 
 ### The distance label
 
 - Format `<integer>m`, no space, no decimals.
-- **Cap height 13 px = 1.2 % of screen height** — about half the HUD ammo digit.
+- **Cap height 13 px = 1.2 % of screen height**, about half the HUD ammo digit.
 - Flat `#FFFFFF`. 1 px dark outline plus a ~2 px downward drop shadow.
 - **Left edge = pin's right edge + 2–3 px.**
-- **Vertical centre sits ~4 px above the pin's tip** — level with the bottom third of
+- **Vertical centre sits ~4 px above the pin's tip**, level with the bottom third of
   the pin. Not centred on the pin, not above it.
 - Fully opaque at both 1 m and 114 m; no range fade observed.
 
 ### The beam
 
 - **Two radial layers**: a broad translucent saturated-blue band and a brighter cyan core.
-- **Contains no red at all** — `R = 0` in every sampled beam pixel. Measured core
+- **Contains no red at all**: `R = 0` in every sampled beam pixel. Measured core
   `#00B1EF`.
 - **Hard flat base** (1–2 px falloff), **soft fading top**.
-- **Tapers — apex up.** Full width for the lower stretch, opening out over the top ~25 %.
+- **Tapers: apex up.** Full width for the lower stretch, opening out over the top ~25 %.
 - **Core width is constant at 16–17 px from 1 m to 114 m** (~0.94 × the pin width). A
   world-space object could not do that, so the core is screen-space or
   distance-compensated.
 - The **outer band** measured ~19 px at 1 m but 39–42 px at 114 m. Flagged as
   inconsistent with the core's constancy; only two distance samples exist.
-- Near the player the cross-section reads as a **hollow tube** — the silhouette edges are
+- Near the player the cross-section reads as a **hollow tube**: the silhouette edges are
   brighter than the centre. Only relevant inside the near range, which this build does
   not draw.
 - The axis is a genuine world-vertical line: two far captures drift in opposite
   directions but extrapolate to a **common vanishing point**, which is camera roll, not a
   tilted beam.
 
-## Contradicted or unsupported — do not treat as settled
+## Contradicted or unsupported: do not treat as settled
 
 ### Marker lifetime and the re-mark cooldown
 
-Not from a capture — nothing in the reference material shows a timer — but from a player
+Not from a capture (nothing in the reference material shows a timer), but from a player
 measurement and Fortnite's own documentation, which is stronger than a guess and weaker
 than a measurement:
 
@@ -80,8 +80,8 @@ than a measurement:
 | Enemy/danger marker lifetime | **unknown** | the only hint is a player watching the world-marker demo describe them as vanishing "after a few seconds, just like danger markers", which suggests single-digit seconds |
 | Cooldown length | **unknown** | documented as existing, never as a duration |
 
-The build uses 45 s for every non-threat marker — one measured number rather than a
-measured one and an invented one beside it — and 500 ms for the cooldown, which is a
+The build uses 45 s for every non-threat marker (one measured number rather than a
+measured one and an invented one beside it), and 500 ms for the cooldown, which is a
 tuned estimate and labelled as one in `PingConstants`. The threat markers keep a
 deliberately shorter 10 s, which is also unsourced and sits at the top of the "a few
 seconds" hint rather than inside it.
@@ -136,14 +136,14 @@ claiming a rule. Set it to `0.0F` for tip-anchoring.
 - The beam's **world height**, and whether it reaches the skybox. It never does in the
   captures, but screen y cannot be converted to altitude without a horizon reference.
 - Beam **height versus distance**: measured 0.14 of screen height at 1 m but 0.88 at
-  114 m — roughly 6× growth for a 114× distance change, which is neither a fixed world
+  114 m, roughly 6× growth for a 114× distance change, which is neither a fixed world
   height nor a fixed screen height. **Inexplicable from these samples.** The build uses a
   flat 0.5 pending better data.
-- **Off-screen indicator / edge clamping** — never observed; every marker was in frame.
-- **Marker lifetime and cooldown** — no timer or cooldown state appears in any capture.
+- **Off-screen indicator / edge clamping**: never observed; every marker was in frame.
+- **Marker lifetime and cooldown**: no timer or cooldown state appears in any capture.
   The durations are known from other evidence; see *Marker lifetime and the re-mark
   cooldown* above, which also lists what is still unknown.
-- The **danger marker** variant (double-tap) — not present in any capture, so no colour
+- The **danger marker** variant (double-tap), not present in any capture, so no colour
   or shape data exists for it.
 - Where the **distance label** goes at extreme range.
 
@@ -157,13 +157,13 @@ this file, the geometry below is read off the frame rather than chosen:
 |---|---|---|
 | Map edge | 252 px, exactly square | 252/1079 = 0.2335 × screen height |
 | Top margin | 32 px | 32/1079 |
-| Right margin | 31 px — the map does **not** touch the screen edge | 31/1079 |
+| Right margin | 31 px: the map does **not** touch the screen edge | 31/1079 |
 | Frame | none: no border, no plate, no shadow | none |
 | Corners | square, radius 0 | square |
 | Readout column | right-aligned against the map's left edge; glyph right edges 25 px out, numbers 61 px out; row pitch 36.5 px | same proportions |
 | Readout glyphs | 19×22 (skull), 20×21 (players bust) | one box, each drawn at its own aspect |
 | Readout text | `#FFFFFF` | white |
-| Location label | white, cap height 21.5 px, ≈3 px black outline, 32 px above the map's foot, right-aligned and clipped at the map edge | **removed — see the note below** |
+| Location label | white, cap height 21.5 px, ≈3 px black outline, 32 px above the map's foot, right-aligned and clipped at the map edge | **removed: see the note below** |
 | Player pointer | 12×17, white with a dark halo | the same artwork |
 | Teammate pointers | same shape, own colour | same, ally-only |
 | Enemy marker | ≈38 px disc, crimson `#D24E49`, white skull punched over it | the same artwork and colour |
@@ -171,11 +171,11 @@ this file, the geometry below is read off the frame rather than chosen:
 Deliberate deviations from the capture, and why:
 
 - **Readout text size.** Fortnite's 14 px cap height is about 4.7 GUI pixels at Minecraft's
-  GUI scale 3 — below what Minecraft's font can draw legibly. The readouts keep Fortnite's
+  GUI scale 3, below what Minecraft's font can draw legibly. The readouts keep Fortnite's
   positions and row rhythm but render at Minecraft's own font size, so they read slightly
   larger than the capture. Matching the pixel height would be matching something nobody
   could read.
-- **The label's content — and then the label.** This one reverses twice and is worth
+- **The label's content, and then the label.** This one reverses twice and is worth
   reading before anyone re-adds it. First the slot was filled with the **biome**, on the
   reasoning that Minecraft has no named locations. Then named locations were built (a
   banner you right-click and type a name into) and took the slot, with the biome as the
@@ -184,7 +184,7 @@ Deliberate deviations from the capture, and why:
   **That contradicts the row above**, which records a location label measured off a
   minimap capture 32 px above the map's foot. Either the capture is from an era that had
   it and current Fortnite does not, or the measurement was attributed to the wrong element.
-  Until a fresh capture settles it, the element is off — and the numbers
+  Until a fresh capture settles it, the element is off, and the numbers
   (`LABEL_FRACTION`, `LABEL_BOTTOM_FRACTION`) are left in `MinimapConstants` as measurements
   looking for something to describe rather than deleted, because the measurement itself is
   probably still real even if its owner is not what was assumed.
@@ -195,13 +195,13 @@ Deliberate deviations from the capture, and why:
 - **Item marks keep their icon on the map.** Still the ambiguous one: see the row below.
 - **The "N" is gone.** Earlier revisions drew a north indicator on the frame. The capture
   has none and no source describes one, so it was removed rather than kept as an
-  unlabelled invention — a north-up map with a compass strip elsewhere does not need it.
+  unlabelled invention, a north-up map with a compass strip elsewhere does not need it.
 - **The label is drawn as a real outline**, not a drop shadow, because the capture's 3 px
   black edge on all sides is what makes it read as a label.
 
 The glyphs themselves are **the real artwork**, extracted from that capture at native
 resolution as white alpha masks. At Minecraft's GUI scale the drawn sizes are *smaller*
-than the extracted ones, so extraction is not a lossy trace of the art — it is more
+than the extracted ones, so extraction is not a lossy trace of the art; it is more
 resolution than is used. Why extraction rather than a download is recorded in
 [docs/ASSETS.md](ASSETS.md).
 
@@ -215,10 +215,10 @@ The behaviours are sourced separately from the geometry:
 | A marker past the frame is shown rather than dropped | **sourced, and matched** | v8.00, "World Markers now have an off-screen indicator and display the distance your character is from them" |
 | The player's own marker is a white arrow | **sourced, and matched** | players refer to "the white arrow"; v16.00 rounded and shortened the player markers on the minimap and map |
 | Teammates are arrows in their own colours | **sourced, and matched** | players describe their own arrow being "covered up by… my teammates' arrows"; the mark takes the player's assigned colour |
-| Marks take a fixed team palette (blue/red/purple/yellow/green) | **not implemented, on purpose** | the wiki gives the order but admits the assignment is unknown, and players dispute the second colour (red vs purple). A marker wears the author's Minecraft *locator bar* colour here, so a ping matches that player's pip — changing it would mean changing the in-world markers too, and a colour that differs between map and world is worse than either |
+| Marks take a fixed team palette (blue/red/purple/yellow/green) | **not implemented, on purpose** | the wiki gives the order but admits the assignment is unknown, and players dispute the second colour (red vs purple). A marker wears the author's Minecraft *locator bar* colour here, so a ping matches that player's pip, changing it would mean changing the in-world markers too, and a colour that differs between map and world is worse than either |
 | Item marks do not appear on the **compass** | recorded, not applicable yet | "Markers and danger markers will also display on the compass, but item marks will not." There is no compass strip in the build; when there is, item marks stay off it |
 | Item marks on the **minimap** | **ambiguous, and this build shows them** | nothing authoritative either way. The compass line implies item marks are shown *somewhere*, but a feature request titled "Make pinged items appear in the minimap through an option" implies they are not on the minimap today. Flagged rather than resolved: showing the icon is more useful, and one community request is thin evidence to remove it |
-| A coordinate grid on the full map | **unsourced — an addition** | the only grid maps found are community-made for POI callouts, which implies the game does not draw one. Fortnite does name locations on the map; Minecraft has none to name, so a numeric grid takes that job |
+| A coordinate grid on the full map | **unsourced (an addition)** | the only grid maps found are community-made for POI callouts, which implies the game does not draw one. Fortnite does name locations on the map; Minecraft has none to name, so a numeric grid takes that job |
 | Threat marks are always red | **community convention, not documented** | the wiki's only colour rule is that a mark takes its player's team colour. Players and press consistently describe the enemy/danger mark as red, and the capture shows the crimson disc measured above |
 
 Three things the map does that Fortnite's does not have to, because Minecraft is not a 7×7 km
@@ -281,13 +281,13 @@ sound; cross-crop comparisons are not, and the two crops disagree in a way that 
 | Gap between bars | ≈ **4 px** |
 | Health bar height | ≈ **30 px** (rows 44–73) |
 | Health ÷ shield height | ≈ **1.6** |
-| Shield fill (50 shown) | ends x ≈ 161 = **47 %** of the bar — consistent with the printed 50 |
+| Shield fill (50 shown) | ends x ≈ 161 = **47 %** of the bar, consistent with the printed 50 |
 | Shield fill colour | blue gradient, left ≈ `#039AEF` → right ≈ `#0AA9EF` |
 | Shield empty track | **solid** `#211C3D`; it is a fill, not a transparency |
 | Health fill (100 shown) | the whole bar |
 | Health fill colour | gradient left ≈ `#25CA45` → right ≈ `#A9F43E`, and brighter at the **top** of the bar (`#A9F43E` top → `#90D433` bottom) |
 | Bar-end cap | a pure yellow block, `#EEF926` → `#F2FF2D`, the last ≈ 4–6 px of the health bar **only**, visible because health is full |
-| Values | white, bold, right of the bar, right-aligned ≈ x 340 — about 35 px clear of the bar's end |
+| Values | white, bold, right of the bar, right-aligned ≈ x 340, about 35 px clear of the bar's end |
 | Backdrop | none. No plate, no panel; the meter sits directly over the world |
 
 The yellow cap is the one thing here whose *rule* is not settled by a single full-health
@@ -320,20 +320,20 @@ within one crop*, never from a raw pixel count.
 ### Sourced, not measured
 
 From the Fortnite Wiki's *Health (Battle Royale)* page, which is documentation rather than
-a capture — stronger than a guess, weaker than a measurement:
+a capture (stronger than a guess, weaker than a measurement):
 
 | Fact | Source |
 |---|---|
 | Health is the **green** bar, shield the **blue** one | wiki prose |
 | Shield is consumed before health; overshield before shield | wiki prose |
 | **Storm and fall damage bypass shield** and hit health directly | wiki prose; also names Alien Parasites and Raz's magic |
-| v11.00 (Chapter 2: Season 1) — the meter moved to the **bottom left** of the HUD | update history |
-| v11.30 — the meter **shakes** when the player takes damage | update history |
-| v20.00 (Chapter 3: Season 2) — "returned to a straight bar instead of slanted similar to Chapter 1 **except on the left instead of the middle**"; Overshield added in Zero Build | update history |
+| v11.00 (Chapter 2: Season 1): the meter moved to the **bottom left** of the HUD | update history |
+| v11.30: the meter **shakes** when the player takes damage | update history |
+| v20.00 (Chapter 3: Season 2): "returned to a straight bar instead of slanted similar to Chapter 1 **except on the left instead of the middle**"; Overshield added in Zero Build | update history |
 | Overshield = **50** on top of the 200 HP threshold, regenerates over time, damaged first | wiki prose |
 | Riding a vehicle draws a separate **orange** health bar above the player's shield bar | wiki prose |
-| v40.40 (Chapter 7: Season 2) — lethal fall damage leaves 1 health instead of eliminating | update history |
-| v39.00 (Chapter 7: Season 1) — hitmarker and elimination sounds updated, with a **Legacy** toggle under Audio | update history |
+| v40.40 (Chapter 7: Season 2): lethal fall damage leaves 1 health instead of eliminating | update history |
+| v39.00 (Chapter 7: Season 1): hitmarker and elimination sounds updated, with a **Legacy** toggle under Audio | update history |
 
 ### What this means for the mod
 
@@ -348,7 +348,7 @@ above are what the constants in that class hold, with one chosen scale on top:
 | icon column ÷ health height | 0.60 | 12 ÷ 16 |
 
 The scale itself (health bar 16 GUI px tall) is **chosen, not measured**, because the
-capture's absolute resolution is unknown — the same caveat as everywhere else in this file.
+capture's absolute resolution is unknown; the same caveat as everywhere else in this file.
 
 Two presentation decisions, both deliberate and both visible:
 
@@ -357,10 +357,10 @@ Two presentation decisions, both deliberate and both visible:
   "100". Instead both bars print the fraction that is filled, as a percentage, so the
   number and the fill always agree and a full bar reads 100. It is a percentage, not a
   hit-point count. Printing raw hit points is the honest alternative and is a one-line
-  change if the percentage is ever judged misleading — but it does not look like Fortnite.
+  change if the percentage is ever judged misleading, but it does not look like Fortnite.
 - **Position is Epic's own.** Their documentation states it directly: health is a green bar
   at the bottom left with a plus icon to its left, and the blue bar above it is shield.
-  That is the layout implemented, and it is also why chat has to move — see below.
+  That is the layout implemented, and it is also why chat has to move (see below).
 
 Three divergences are worth knowing rather than discovering later:
 
@@ -374,7 +374,7 @@ Three divergences are worth knowing rather than discovering later:
 - **The terminator is a fill-end cap, and that reading is inferred.** Each bar ends in a
   bright block: a yellow tip on health, a thin cyan sliver on shield. Both captures that
   show it have the bar at full, where "end of the fill" and "end of the bar" are the same
-  pixel — so the capture alone cannot separate them. The shield bar decides it: at 50% its
+  pixel, so the capture alone cannot separate them. The shield bar decides it: at 50% its
   sliver sits at 47%, which no fixed bar-end cap explains. The cap therefore tracks the
   fill and is drawn at every value, not only when full. A capture of a *part-filled* health
   bar would confirm it directly; until then this is the inference and it is labelled as
@@ -385,7 +385,7 @@ Three divergences are worth knowing rather than discovering later:
 Fortnite puts the meter bottom-left; Minecraft puts chat there. They print over each other
 until one moves, and the meter is the one Epic has a documented position for, so chat is
 what moves. `ChatOffsetHud` replaces the vanilla `chat` element with the same
-`ChatComponent` drawn through the same call inside a translated matrix — chat's own
+`ChatComponent` drawn through the same call inside a translated matrix: chat's own
 behaviour is untouched, only where its output lands. The offset comes from
 `HealthShieldHud.clearance()`, so resizing the meter moves chat with it instead of the two
 drifting apart.
@@ -398,7 +398,7 @@ health bar.
 Sourced and citable, which matters because the roadmap had this filed as "needs a capture":
 
 - The wiki's **Message Feed** page: "a string of text in the **bottom left side** of the
-  player's screen". That is the position, in prose, from the wiki — not a guess and not
+  player's screen". That is the position, in prose, from the wiki, not a guess and not
   inferred from a crop.
 - v34.30 (Chapter 6: Season 2): **"Markers now cause a message to be displayed in the
   Message Feed."** So the ping feed is a real, dated feature, and it reuses the same feed
@@ -417,10 +417,10 @@ Sourced and citable, which matters because the roadmap had this filed as "needs 
 | Lines | 5 |
 | Glyph cap height | **14 px**, identical on every line |
 | Line pitch | **32–33 px**, i.e. ≈ **2.3 ×** the cap height |
-| Left margin | text ink begins x ≈ 74 of 535 — ≈ **14 %** in from the left edge |
+| Left margin | text ink begins x ≈ 74 of 535, ≈ **14 %** in from the left edge |
 | Body text | white, flat, with a dark drop shadow / outline |
-| Highlight | victim name in red; sampled ≈ `#BE4537`–`#CA453F` (low sample count — antialiasing against the backdrop pulls it, so treat the exact value as soft) |
-| Backdrop | **none** — no plate, no panel, text straight over the world |
+| Highlight | victim name in red; sampled ≈ `#BE4537`–`#CA453F` (low sample count, antialiasing against the backdrop pulls it, so treat the exact value as soft) |
+| Backdrop | **none**: no plate, no panel, text straight over the world |
 
 **Treat the newline rhythm as the transferable number and the position as sourced from the
 prose instead.** The backdrop of this crop is a flat, uniform grass texture across all 535
@@ -432,7 +432,7 @@ from it would not. Hence: pitch and cap height from the image, bottom-left from 
 
 Sourced from the wiki's *Compass* page:
 
-- It is part of the HUD and can be **turned off** — relevant, because this mod's minimap is
+- It is part of the HUD and can be **turned off**, relevant, because this mod's minimap is
   already a toggle.
 - It shows facing direction, cardinal or in degrees.
 - An opponent firing a **non-suppressed** weapon puts a **red blip** on the compass, larger
@@ -442,7 +442,7 @@ Sourced from the wiki's *Compass* page:
 
 The gunfire blip is the one compass behaviour with no Minecraft equivalent yet, and unlike
 the rest of the compass it is not free: it needs a client-side hook on incoming sound
-packets. Whether Fabric exposes one is **not yet checked** — this is a lead, not a plan.
+packets. Whether Fabric exposes one is **not yet checked**; this is a lead, not a plan.
 
 ## The marker wheel, and the POI sounds
 
@@ -461,7 +461,7 @@ named, so the discovery cue does not have to be borrowed from the marking tones.
 ## The settings screen
 
 **This section reversed.** It used to say "entirely a working value, nothing here is
-measured" — there was no capture of Fortnite's settings screen anywhere in the repo, so the
+measured": there was no capture of Fortnite's settings screen anywhere in the repo, so the
 first version was spaced to the map screen's rhythm and shipped as a guess. It looked
 nothing like Fortnite and the author said so. Two captures of the real screen now exist
 (`fn-settings-video-tab.png`, `fn-settings-audio-tab.png`, both 2000 × 1125, recorded in
@@ -472,7 +472,7 @@ capture; this screen's comes from a settings capture. They are two different scr
 Fortnite and they look different, so they have two different sets of numbers. Do not
 "unify" them.
 
-**Measured, from those two frames** — a clean 16:9 capture, so ratios of a known frame
+**Measured, from those two frames**: a clean 16:9 capture, so ratios of a known frame
 rather than of a crop of unknown scale, which is better footing than the marker work above:
 
 | | |
@@ -505,7 +505,7 @@ exactly what shipped in the first build of this screen and what the author repor
 ## The single most valuable next input
 
 One **full-resolution, uncropped screenshot with the HUD fully in frame at a recorded FOV
-setting**, of a single waypoint marker — plus the **same marker captured while walking
+setting**, of a single waypoint marker, plus the **same marker captured while walking
 from ~10 m to ~120 m** without changing the view.
 
 That one set fixes absolute scale, resolves the vertical anchor rule, measures the beam's

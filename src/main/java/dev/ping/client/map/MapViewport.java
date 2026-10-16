@@ -42,7 +42,7 @@ public record MapViewport(float x, float y, float size, double centerX, double c
 				&& screenY >= this.y && screenY <= this.y + this.size;
 	}
 
-	/** The middle of the frame, in screen pixels. Not the world centre — see {@link #centerX()}. */
+	/** The middle of the frame, in screen pixels. Not the world centre, see {@link #centerX()}. */
 	public float screenCenterX() {
 		return this.x + this.size * 0.5F;
 	}

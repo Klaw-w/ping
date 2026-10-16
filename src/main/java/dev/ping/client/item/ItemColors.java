@@ -23,14 +23,14 @@ import net.minecraft.world.item.component.DyedItemColor;
  * <p>Three rules, in order:
  *
  * <ol>
- *   <li><b>Dyed items</b> — leather armour and anything else carrying a
+ *   <li><b>Dyed items</b>: leather armour and anything else carrying a
  *       {@code DYED_COLOR} component uses that exact colour.</li>
- *   <li><b>Known materials and dye-coloured blocks</b> — {@code diamond_ore} is drawn in
+ *   <li><b>Known materials and dye-coloured blocks</b>: {@code diamond_ore} is drawn in
  *       diamond blue, not in the average of its own grey rock texture, and
  *       {@code red_bed} is drawn in red rather than in the average of the bed model.
  *       These are the cases where the item's appearance genuinely is not the thing being
  *       called out.</li>
- *   <li><b>Everything else</b> — the average colour of the item's own icon, ignoring
+ *   <li><b>Everything else</b>: the average colour of the item's own icon, ignoring
  *       transparent pixels. That is what makes an apple read red and a stick read brown
  *       without anyone having to write a table.</li>
  * </ol>
@@ -112,7 +112,7 @@ public final class ItemColors {
 	 */
 	public static int of(ItemStack stack, int fallback) {
 		// Dyed items vary from stack to stack, so they must never come from the shared
-		// cache — the check has to happen before the lookup, not after it.
+		// cache: the check has to happen before the lookup, not after it.
 		DyedItemColor dyed = stack.get(DataComponents.DYED_COLOR);
 
 		if (dyed != null) {
@@ -151,7 +151,7 @@ public final class ItemColors {
 	}
 
 	/**
-	 * The item's path within its namespace, taken from its translation key — e.g.
+	 * The item's path within its namespace, taken from its translation key, e.g.
 	 * {@code item.minecraft.diamond_ore} gives {@code diamond_ore}. Avoids a registry
 	 * lookup entirely.
 	 *
