@@ -32,6 +32,11 @@ needs doing unless you want to change or add something.
 | Player pointer | extracted from a capture, see below | `textures/ping/arrow.png` |
 | Shield glyph | Fortnite Wiki | `textures/ping/hud_shield.png` |
 | Health cross glyph | Fortnite Wiki | `textures/ping/hud_health.png` |
+| `FORTNITE` wordmark (README banner) | supplied by the project author, original source unrecorded | `docs/hero.png` (repo only, not shipped) |
+
+The banner is the one asset here whose provenance is unknown: it was supplied directly
+rather than pulled from Beyond Assets, the wiki or FModel. If a sourced original turns up,
+replace it. *Fortnite* is a trademark of Epic Games, Inc.; see the README disclaimer.
 
 ### Why the three HUD glyphs are extracted, not downloaded
 
@@ -146,27 +151,6 @@ FModel exports `.wav`. Convert with:
 ```
 ffmpeg -i neutral.wav -ac 1 -c:a libvorbis -q:a 5 neutral.ogg
 ```
-
-## Font
-
-Fortnite's UI font is the **Burbank** family by House Industries. The styles the game
-uses are `Burbank Big Condensed Black` for headings and `Burbank Small Medium/Bold/Black`
-for HUD text. A community archive of the extracted game fonts exists as
-`github.com/Djihads80/FortniteFonts` — third-party, not affiliated with Epic, and the
-fonts are commercially licensed, so private use only.
-
-The archive is the easier route; pulling a usable `.ttf` out of a pak is fiddly.
-
-Drop it at:
-
-```
-src/main/resources/assets/ping/burbank.ttf
-```
-
-**Not wired up yet.** Ping labels currently use Minecraft's default font. Wiring it in
-means adding a font provider at `assets/ping/font/ping.json` pointing at that file
-and passing the font to the label draw call. Scoped to ping labels only, so it will not
-repaint the rest of the game's text.
 
 ## Reference material (not shipped)
 

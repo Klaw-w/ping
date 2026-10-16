@@ -255,10 +255,9 @@ matches, or dropped:
 | `BARS 4,368` | dropped | a Fortnite currency with no Minecraft counterpart |
 | `PAN` / `ZOOM` / `PLACE MARKER` / `Exit` | the same, with this mod's real bindings | the capture's hint column, so drag-to-pan had to be implemented |
 
-Two things are decorative and known to be: the tab strip shows all four of Fortnite's tabs
+One thing is decorative and known to be: the tab strip shows all four of Fortnite's tabs
 with only `MAP` doing anything, because the capture has all four and removing three would
-stop matching it; and the labels use Minecraft's font rather than **Burbank**, which
-`docs/ASSETS.md` covers — it is a commercial font and is not wired up.
+stop matching it.
 
 ## The health and shield meter, Chapter 7
 
@@ -495,10 +494,8 @@ lit and named beneath it, a section heading, rows of label-left and value-right 
 segmented bar under the value, a rounded outline on the focused row, a description panel
 with an option list, and the pill buttons bottom-right.
 
-Two things the capture has that this build deliberately does not: eleven tab icons, when the
-mod has two screens and a tab that does nothing is a lie in the shape of a button; and the
-Burbank typeface, which is not shipped — sizes and weights follow the frame, the letterforms
-cannot. See [ASSETS.md](ASSETS.md).
+One thing the capture has that this build deliberately does not: eleven tab icons, when the
+mod has two screens and a tab that does nothing is a lie in the shape of a button.
 
 **Text is boxed.** Every label, value and paragraph sits in an invisible box, clipped to it,
 scrolling within it when the text is too long. That is how Fortnite behaves and it is not

@@ -179,19 +179,6 @@ screen yet.
 
 Status: **built**, pending one visual check
 
-### The Burbank font
-
-`ASSETS.md` has the whole plan: drop the `.ttf` at
-`src/main/resources/assets/ping/burbank.ttf`, add a font provider at
-`assets/ping/font/ping.json`, pass the font to the label draw call. The asset is
-commercially licensed, so this is a private-use build and should stay out of anything
-distributed.
-
-Scope note: this is not only ping labels. The settings menu and the feed both want it, so
-it is cheaper to do before either than after.
-
-Status: **ready**
-
 ### The compass strip
 
 Already on the README list. It is also the only place a **POI name works while playing** —
@@ -370,14 +357,13 @@ Reasoning, not priority by size:
 1. **Health and shields** — first, because it is now the only item on this list that is
    fully referenced *and* fully unblocked. It is also the smallest fully-correct standalone
    change, and it proves the `replaceElement` path before anything bigger depends on it.
-2. **Burbank font** — cheaper before the menu and feed exist than after.
-3. **The settings menu** — the container for everything below, and it stays third only
+2. **The settings menu** — the container for everything below, and it stays second only
    because its reference is missing (see the next section). Its content is not: the two
    JSON settings, the marker colours, the Fidelity tab and the feed toggle are all
    specified below and need no screenshot to decide.
-4. **The ping feed** — needs the menu for its toggle; two thirds of it is already written.
-5. **The radial wheel** — unblocks the two dead `PingType` constants.
-6. **POIs** — last, because it is the only item that has to answer the structure question
+3. **The ping feed** — needs the menu for its toggle; two thirds of it is already written.
+4. **The radial wheel** — unblocks the two dead `PingType` constants.
+5. **POIs** — last, because it is the only item that has to answer the structure question
    first, and a POI system with nowhere to draw the name is half a feature.
 
 ## What reference is still missing

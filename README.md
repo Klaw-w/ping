@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="docs/hero.png" alt="Ping" width="100%">
+</p>
+
 # Ping
 
 Fortnite's ping system, rebuilt for Minecraft as a client-side mod.
@@ -139,9 +143,6 @@ second one for the minimap. Bind them if you want them to hand.
 The real Fortnite marker sounds and icons are already in the mod — see
 **[docs/ASSETS.md](docs/ASSETS.md)** for where they came from and how to swap in more.
 
-The one asset still missing is the **Burbank font**, so ping labels use Minecraft's
-default font for now.
-
 ## Building
 
 ```
@@ -164,7 +165,6 @@ what is known about each and what is blocked, is **[docs/ROADMAP.md](docs/ROADMA
 - **The radial wheel.** Holding the ping key should open Fortnite's communication
   wheel (Enemy Spotted / Going Here / Defend This / Need Ammo…). Currently only the
   singular smart ping and the double-tap danger marker exist.
-- **Burbank font** on the labels. Slot and plan exist, wiring does not.
 - **The compass strip**, which is where markers — but not item marks — belong above the
   hotbar. `docs/FIDELITY.md` records the rule so it lands right when it is built.
 - **A pannable map.** The full-size map is centred on you and zooms; Fortnite's can also
@@ -172,3 +172,13 @@ what is known about each and what is blocked, is **[docs/ROADMAP.md](docs/ROADMA
 - **Marker depth against the world.** The beam is real world geometry and is occluded
   properly, but the pin and its label are HUD, so terrain in front of a pin does not hide
   it — only dim it.
+
+---
+
+## Disclaimer
+
+Not affiliated with, endorsed by, or associated with Epic Games or Mojang. *Fortnite* is a
+trademark of Epic Games, Inc. and *Minecraft* is a trademark of Mojang Studios. All
+trademarks belong to their respective owners.
+
+Made with **DeepSeek**. This mod was written with AI assistance from DeepSeek models.

@@ -42,8 +42,8 @@ import org.lwjgl.glfw.GLFW;
  * treated as one screen's.
  *
  * <p><b>Text is the exception, and it is why the sizes read oddly.</b> Fortnite sets these
- * screens in Burbank, which this mod does not ship — see {@code docs/ASSETS.md} — so the
- * sizes are kept as <em>ratios to the smallest cap height in the capture</em> and applied to
+ * screens in a typeface this mod does not ship, so the sizes are kept as
+ * <em>ratios to the smallest cap height in the capture</em> and applied to
  * Minecraft's own font. The smallest text in the frame is the tab name and the button
  * labels, both 17 capture pixels; that is drawn at 1×, so nothing here except the frame-rate
  * readout (0.82×) is smaller than the game's own glyphs. The same trade is already made in
